@@ -1,9 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import photo from "@/assets/photo.asset.json";
 import resume from "@/assets/resume.asset.json";
-
-const CommitScape = lazy(() => import("@/components/CommitScape"));
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,11 +26,11 @@ export const Route = createFileRoute("/")({
 });
 
 const NAV = [
+  { id: "top", label: "Home" },
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
-  { id: "leadership", label: "Leadership" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -44,20 +42,14 @@ const LINKS = {
   phone: "tel:+919588430618",
 };
 
-const SKILLS: { hash: string; title: string; items: string[] }[] = [
-  { hash: "#a1c07f", title: "Languages", items: ["C", "C++", "Java", "Python", "JavaScript", "SQL"] },
+const SKILLS: { title: string; items: string[] }[] = [
+  { title: "Languages", items: ["C", "C++", "Java", "Python", "JavaScript", "SQL"] },
+  { title: "Frontend", items: ["React.js", "Redux", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap"] },
   {
-    hash: "#3e91bd",
-    title: "Frontend",
-    items: ["React.js", "Redux", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap"],
-  },
-  {
-    hash: "#7fd2a4",
     title: "Backend",
     items: ["Node.js", "Express.js", "FastAPI", "REST APIs", "CI/CD", "GitHub Actions"],
   },
   {
-    hash: "#c04e2b",
     title: "AI / ML",
     items: [
       "Machine Learning",
@@ -70,22 +62,15 @@ const SKILLS: { hash: string; title: string; items: string[] }[] = [
     ],
   },
   {
-    hash: "#5b2f9e",
     title: "Frameworks",
     items: ["PyTorch", "TensorFlow", "Scikit-learn", "Hugging Face", "LangChain"],
   },
   {
-    hash: "#e0a13c",
     title: "Databases",
     items: ["MongoDB", "PostgreSQL", "MySQL", "Firebase", "FAISS", "ChromaDB"],
   },
+  { title: "Tools", items: ["Git", "GitHub", "Linux", "VS Code", "Postman", "Jupyter Notebook"] },
   {
-    hash: "#2b7a78",
-    title: "Tools",
-    items: ["Git", "GitHub", "Linux", "VS Code", "Postman", "Jupyter Notebook"],
-  },
-  {
-    hash: "#9e4f6d",
     title: "Core CS",
     items: ["DSA", "OOP", "DBMS", "Operating Systems", "Computer Networks", "SDLC", "Agile"],
   },
@@ -93,7 +78,7 @@ const SKILLS: { hash: string; title: string; items: string[] }[] = [
 
 const PROJECTS = [
   {
-    hash: "#4f2a91",
+    no: "01",
     name: "DevRank",
     stack: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "GitHub API", "Gemini API"],
     bullets: [
@@ -103,7 +88,7 @@ const PROJECTS = [
     live: "https://dev-rank-delta.vercel.app/",
   },
   {
-    hash: "#8b1d47",
+    no: "02",
     name: "LegaliTea AI",
     stack: ["React.js", "Node.js", "Express.js", "Llama 3.3-70B", "REST APIs"],
     bullets: [
@@ -113,7 +98,7 @@ const PROJECTS = [
     live: "https://legalitea-genai.vercel.app/",
   },
   {
-    hash: "#1f6f8b",
+    no: "03",
     name: "DevPath",
     stack: ["React.js", "TypeScript", "Tailwind CSS", "AI"],
     bullets: [
@@ -123,7 +108,7 @@ const PROJECTS = [
     live: "https://devpath-kohl.vercel.app/",
   },
   {
-    hash: "#c96a13",
+    no: "04",
     name: "AI Resume Analyzer",
     stack: ["React.js", "TypeScript", "React Router", "Tailwind CSS", "Gemini API"],
     bullets: [
@@ -135,14 +120,9 @@ const PROJECTS = [
 ];
 
 function Portfolio() {
-  const [active, setActive] = useState("about");
-  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("top");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
     const obs = new IntersectionObserver(
       (entries) => {
         for (const e of entries) if (e.isIntersecting) setActive(e.target.id);
@@ -153,31 +133,29 @@ function Portfolio() {
       const el = document.getElementById(n.id);
       if (el) obs.observe(el);
     });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      obs.disconnect();
-    };
+    return () => obs.disconnect();
   }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
-      <header
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-          scrolled ? "border-b border-border bg-background/85 backdrop-blur-xl" : ""
-        }`}
-      >
-        <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
-          <a href="#top" className="font-mono text-sm tracking-tight text-foreground">
-            ayush<span className="text-primary">.</span>ke
+      <header className="fixed inset-x-0 top-4 z-50 px-4">
+        <nav className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 rounded-full bg-ink px-4 text-ink-foreground shadow-lg sm:px-6">
+          <a href="#top" className="flex items-center gap-2">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+              A
+            </span>
+            <span className="text-base font-semibold tracking-tight">Ayush</span>
           </a>
           <ul className="hidden items-center gap-1 md:flex">
             {NAV.map((n) => (
               <li key={n.id}>
                 <a
                   href={`#${n.id}`}
-                  className={`rounded-md px-3 py-2 font-mono text-xs uppercase tracking-widest transition-colors hover:text-foreground ${
-                    active === n.id ? "text-primary" : "text-muted-foreground"
+                  className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
+                    active === n.id
+                      ? "text-primary"
+                      : "text-ink-muted hover:text-ink-foreground"
                   }`}
                 >
                   {n.label}
@@ -185,89 +163,133 @@ function Portfolio() {
               </li>
             ))}
           </ul>
-          <div className="flex items-center gap-3 font-mono text-xs">
-            <a
-              href={LINKS.github}
-              target="_blank"
-              rel="noreferrer"
-              className="text-muted-foreground transition-colors hover:text-accent"
-            >
-              GH
-            </a>
-            <a
-              href={LINKS.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="text-muted-foreground transition-colors hover:text-accent"
-            >
-              LI
-            </a>
-            <a
-              href={LINKS.leetcode}
-              target="_blank"
-              rel="noreferrer"
-              className="text-muted-foreground transition-colors hover:text-accent"
-            >
-              LC
-            </a>
-          </div>
+          <a
+            href={resume.url}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            Résumé
+          </a>
         </nav>
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden">
-        <div className="absolute inset-0">
-          <Suspense fallback={null}>
-            <CommitScape />
-          </Suspense>
-        </div>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/80 via-background/25 to-background" />
-        <div className="relative mx-auto w-full max-w-6xl px-5 pb-20 pt-32 sm:px-8">
-          <p className="eyebrow rise">#init — commit history, extruded</p>
-          <h1 className="rise mt-4 text-[clamp(2.6rem,8vw,6rem)] font-semibold leading-[0.95]">
-            Ayush
-            <br />
-            Kesharwani
-          </h1>
-          <p className="rise mt-6 max-w-xl font-mono text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Software Engineer — Full-Stack &amp; AI/ML.
-            <br />
-            <span className="text-accent">Pune, India</span> · building REST-first back-ends and
-            production LLM applications.
-          </p>
-          <div className="rise mt-9 flex flex-wrap items-center gap-3">
-            <a
-              href={resume.url}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md bg-primary px-5 py-3 font-mono text-xs uppercase tracking-widest text-primary-foreground transition-transform hover:-translate-y-0.5"
-            >
-              Download Résumé
-            </a>
+      <section id="top" className="relative overflow-hidden pt-28 sm:pt-32">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="rise text-center">
+            <span className="inline-block rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-muted-foreground">
+              Hello!
+            </span>
+            <h1 className="mx-auto mt-5 max-w-4xl text-[clamp(2.4rem,7vw,5rem)] font-extrabold leading-[1.02]">
+              I&apos;m <span className="text-primary">Ayush,</span>
+              <br />
+              Software Engineer
+            </h1>
+          </div>
+
+          <div className="relative mt-10 grid items-end gap-10 md:grid-cols-[1fr_auto_1fr]">
+            {/* left stat */}
+            <div className="rise order-2 max-w-xs md:order-1 md:pb-16">
+              <p className="text-4xl font-bold leading-none text-primary">“</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Full-stack &amp; AI/ML engineer — REST-first back-ends, cloud deployment and
+                production LLM applications.
+              </p>
+              <p className="mt-7 font-display text-3xl font-bold">8+</p>
+              <p className="text-sm text-muted-foreground">Full-stack features shipped</p>
+            </div>
+
+            {/* photo */}
+            <div className="order-1 mx-auto md:order-2">
+              <div className="relative mx-auto w-[min(78vw,380px)]">
+                <div className="blob absolute -inset-x-6 bottom-6 top-20" aria-hidden="true" />
+                <img
+                  src={photo.url}
+                  alt="Portrait of Ayush Kesharwani"
+                  className="relative z-10 w-full rounded-3xl object-cover shadow-xl"
+                />
+              </div>
+            </div>
+
+
+            {/* right stat */}
+            <div className="rise order-3 max-w-xs justify-self-end text-right md:pb-16">
+              <p className="text-lg tracking-widest text-primary">★★★★★</p>
+              <p className="mt-2 font-display text-3xl font-bold">9.29</p>
+              <p className="text-sm text-muted-foreground">SGPA · B.E. Computer Engineering</p>
+              <div className="mt-4 h-px w-24 bg-foreground/70 md:ml-auto" />
+            </div>
+          </div>
+
+          <div className="relative z-20 mt-10 flex flex-wrap items-center justify-center gap-3 pb-20">
             <a
               href="#projects"
-              className="rounded-md border border-border px-5 py-3 font-mono text-xs uppercase tracking-widest text-foreground transition-colors hover:border-accent hover:text-accent"
+              className="rounded-full bg-card px-6 py-3 text-sm font-semibold text-foreground shadow-md ring-1 ring-primary/60 transition-transform hover:-translate-y-0.5"
             >
-              See Projects
+              Portfolio ↗
+            </a>
+            <a
+              href={LINKS.email}
+              className="rounded-full bg-card px-6 py-3 text-sm font-semibold text-foreground shadow-md ring-1 ring-border transition-transform hover:-translate-y-0.5"
+            >
+              Hire Me
             </a>
           </div>
         </div>
       </section>
 
+      {/* SKILLS — dark band */}
+      <section id="skills" className="scroll-mt-24 rounded-t-[2rem] bg-ink text-ink-foreground">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <h2 className="text-[clamp(1.9rem,4vw,2.75rem)] font-bold">
+              My <span className="text-primary">Skills</span>
+            </h2>
+            <p className="max-w-sm text-sm leading-relaxed text-ink-muted">
+              A practical stack spanning product front-ends, scalable back-end services and applied
+              machine learning.
+            </p>
+          </div>
+          <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {SKILLS.map((s) => (
+              <div
+                key={s.title}
+                className="group rounded-2xl bg-ink-foreground/[0.06] p-5 transition-colors hover:bg-primary"
+              >
+                <h3 className="text-base font-semibold">{s.title}</h3>
+                <ul className="mt-4 flex flex-wrap gap-1.5">
+                  {s.items.map((i) => (
+                    <li
+                      key={i}
+                      className="rounded-full bg-ink-foreground/10 px-2.5 py-1 text-[0.72rem] text-ink-muted transition-colors group-hover:bg-ink-foreground/20 group-hover:text-ink-foreground"
+                    >
+                      {i}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ABOUT */}
-      <Section id="about" hash="#0d9e21" title="About">
-        <div className="grid gap-10 md:grid-cols-[260px_1fr] md:gap-14">
+      <Section id="about" label="About" title="About Me">
+        <div className="grid gap-10 md:grid-cols-[280px_1fr] md:gap-14">
           <div className="relative">
-            <div className="absolute -inset-2 rounded-xl border border-border" aria-hidden="true" />
+            <div className="absolute -left-3 -top-3 h-full w-full rounded-2xl bg-primary/15" aria-hidden="true" />
             <img
               src={photo.url}
-              alt="Portrait of Ayush Kesharwani"
+              alt="Ayush Kesharwani working"
               loading="lazy"
-              className="relative w-full rounded-lg object-cover grayscale-[15%]"
+              className="relative w-full rounded-2xl bg-secondary object-cover"
             />
           </div>
           <div>
-            <p className="text-lg leading-relaxed text-foreground/90">
+            <p className="text-lg leading-relaxed">
               Software engineer with experience across the full development lifecycle — REST API
               design, cloud deployment and AI/ML model integration. Skilled in full-stack
               development, scalable back-end systems and production-ready AI applications using
@@ -278,52 +300,30 @@ function Portfolio() {
               delivering impactful software — from a GitHub-analytics ranking engine to LLM-powered
               document intelligence.
             </p>
-            <div className="mt-8 rounded-lg border border-border bg-card p-6">
+            <div className="mt-8 rounded-2xl border border-border bg-card p-6 shadow-sm">
               <p className="eyebrow">Education</p>
-              <h3 className="mt-3 text-lg font-medium">
+              <h3 className="mt-3 text-lg font-semibold">
                 Modern Education Society&apos;s Wadia College of Engineering
               </h3>
               <p className="mt-1 text-sm text-muted-foreground">Pune, Maharashtra</p>
-              <p className="mt-3 font-mono text-sm text-foreground">
-                B.E. Computer Engineering · SGPA <span className="text-primary">9.29/10</span>
+              <p className="mt-3 text-sm">
+                B.E. Computer Engineering · SGPA{" "}
+                <span className="font-semibold text-primary">9.29/10</span>
               </p>
-              <p className="mt-1 font-mono text-xs text-muted-foreground">Aug 2023 – Jul 2027</p>
+              <p className="mt-1 text-xs text-muted-foreground">Aug 2023 – Jul 2027</p>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* SKILLS */}
-      <Section id="skills" hash="#7e1f04" title="Technical Skills">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {SKILLS.map((s) => (
-            <div
-              key={s.title}
-              className="group rounded-lg border border-border bg-card p-5 transition-colors hover:border-accent/40"
-            >
-              <p className="font-mono text-[0.7rem] text-muted-foreground">{s.hash}</p>
-              <h3 className="mt-2 text-base font-medium text-foreground">{s.title}</h3>
-              <ul className="mt-4 flex flex-wrap gap-1.5">
-                {s.items.map((i) => (
-                  <li
-                    key={i}
-                    className="rounded border border-border bg-surface-alt px-2 py-1 font-mono text-[0.7rem] text-muted-foreground transition-colors group-hover:text-foreground"
-                  >
-                    {i}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </Section>
-
       {/* EXPERIENCE */}
-      <Section id="experience" hash="#2fa1c8" title="Experience">
-        <div className="rounded-lg border border-border bg-card p-7 sm:p-9">
+      <Section id="experience" label="Experience" title="Where I've Worked">
+        <div className="rounded-2xl border border-border bg-card p-7 shadow-sm sm:p-9">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
-            <h3 className="text-xl font-medium">Web Developer Intern — Remote</h3>
-            <p className="font-mono text-xs text-primary">Feb 2026 – Apr 2026</p>
+            <h3 className="text-xl font-semibold">Web Developer Intern — Remote</h3>
+            <p className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+              Feb 2026 – Apr 2026
+            </p>
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
             Vrikshamitra Foundation · Bengaluru, Karnataka
@@ -334,7 +334,7 @@ function Portfolio() {
               "Optimized backend performance by resolving 30+ bugs and implementing CI/CD, reducing deployment time by 75%.",
             ].map((b) => (
               <li key={b} className="flex gap-3 leading-relaxed text-muted-foreground">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                 {b}
               </li>
             ))}
@@ -343,20 +343,31 @@ function Portfolio() {
       </Section>
 
       {/* PROJECTS */}
-      <Section id="projects" hash="#4f2a91" title="Projects">
+      <Section id="projects" label="Portfolio" title="Selected Projects">
         <div className="grid gap-5 lg:grid-cols-2">
           {PROJECTS.map((p) => (
             <article
               key={p.name}
-              className="flex flex-col rounded-lg border border-border bg-card p-7 transition-colors hover:border-primary/40"
+              className="flex flex-col rounded-2xl border border-border bg-card p-7 shadow-sm transition-shadow hover:shadow-lg"
             >
-              <p className="font-mono text-[0.7rem] text-muted-foreground">{p.hash}</p>
-              <h3 className="mt-2 text-2xl font-medium">{p.name}</h3>
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-semibold text-primary">{p.no}</span>
+                <a
+                  href={p.live}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Open ${p.name}`}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform hover:-translate-y-0.5"
+                >
+                  ↗
+                </a>
+              </div>
+              <h3 className="mt-3 text-2xl font-bold">{p.name}</h3>
               <ul className="mt-4 flex flex-wrap gap-1.5">
                 {p.stack.map((s) => (
                   <li
                     key={s}
-                    className="rounded border border-border px-2 py-1 font-mono text-[0.68rem] text-accent"
+                    className="rounded-full bg-secondary px-2.5 py-1 text-[0.7rem] font-medium text-muted-foreground"
                   >
                     {s}
                   </li>
@@ -370,14 +381,14 @@ function Portfolio() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 flex gap-4 font-mono text-xs">
+              <div className="mt-6 flex gap-4 text-sm font-medium">
                 <a
                   href={p.live}
                   target="_blank"
                   rel="noreferrer"
                   className="text-primary underline-offset-4 hover:underline"
                 >
-                  Live ↗
+                  Live site
                 </a>
                 <a
                   href={LINKS.github}
@@ -385,7 +396,7 @@ function Portfolio() {
                   rel="noreferrer"
                   className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
                 >
-                  Code ↗
+                  Source
                 </a>
               </div>
             </article>
@@ -394,12 +405,14 @@ function Portfolio() {
       </Section>
 
       {/* LEADERSHIP */}
-      <Section id="leadership" hash="#b5842a" title="Leadership & Achievements">
+      <Section id="leadership" label="Recognition" title="Leadership & Achievements">
         <div className="grid gap-5 lg:grid-cols-2">
-          <div className="rounded-lg border border-border bg-card p-7">
+          <div className="rounded-2xl border border-border bg-card p-7 shadow-sm">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 className="text-xl font-medium">Technical Head</h3>
-              <p className="font-mono text-xs text-primary">2024 – 2025</p>
+              <h3 className="text-xl font-semibold">Technical Head</h3>
+              <p className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                2024 – 2025
+              </p>
             </div>
             <p className="mt-1 text-sm text-muted-foreground">
               MESWCOE E-Cell — Entrepreneurship Cell, Pune
@@ -409,18 +422,18 @@ function Portfolio() {
               project execution, delivering scalable, production-ready solutions for club events.
             </p>
           </div>
-          <div className="rounded-lg border border-border bg-card p-7">
+          <div className="rounded-2xl border border-border bg-card p-7 shadow-sm">
             <p className="eyebrow">Achievements</p>
             <ul className="mt-5 space-y-4">
-              <li className="leading-relaxed">
-                <span className="font-mono text-sm text-accent">Winner</span>
-                <p className="mt-1 text-muted-foreground">
+              <li>
+                <span className="text-sm font-semibold text-primary">Winner</span>
+                <p className="mt-1 leading-relaxed text-muted-foreground">
                   Hacktoberfest (DigitalOcean, India) and RoboCon (CRIF India) — 2025 &amp; 2024
                 </p>
               </li>
-              <li className="leading-relaxed">
-                <span className="font-mono text-sm text-accent">Finalist</span>
-                <p className="mt-1 text-muted-foreground">
+              <li>
+                <span className="text-sm font-semibold text-primary">Finalist</span>
+                <p className="mt-1 leading-relaxed text-muted-foreground">
                   MumbaiHacks and ByteVerse 7.0 (NIT Patna) — 2025
                 </p>
               </li>
@@ -430,27 +443,27 @@ function Portfolio() {
       </Section>
 
       {/* CONTACT */}
-      <section id="contact" className="relative overflow-hidden border-t border-border">
-        <div className="pointer-events-none absolute inset-0 grid-fade" aria-hidden="true" />
-        <div className="relative mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
-          <p className="eyebrow">#end — let&apos;s build</p>
-          <h2 className="mt-4 text-[clamp(2rem,6vw,4rem)] font-semibold leading-[1.02]">
+      <section
+        id="contact"
+        className="scroll-mt-24 rounded-t-[2rem] bg-ink text-ink-foreground"
+      >
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+          <p className="eyebrow text-primary">Contact</p>
+          <h2 className="mt-4 text-[clamp(2rem,5vw,3.5rem)] font-bold leading-[1.05]">
             Open to internships,
             <br />
             <span className="text-primary">full-stack &amp; AI roles.</span>
           </h2>
-          <div className="mt-10 grid gap-6 font-mono text-sm sm:grid-cols-2">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
             <a href={LINKS.email} className="group block">
-              <span className="eyebrow block">Email</span>
-              <span className="mt-1 block text-foreground group-hover:text-accent">
+              <span className="eyebrow block text-ink-muted">Email</span>
+              <span className="mt-1 block text-lg group-hover:text-primary">
                 ayush.kesharwani.work@gmail.com
               </span>
             </a>
             <a href={LINKS.phone} className="group block">
-              <span className="eyebrow block">Phone</span>
-              <span className="mt-1 block text-foreground group-hover:text-accent">
-                +91-9588430618
-              </span>
+              <span className="eyebrow block text-ink-muted">Phone</span>
+              <span className="mt-1 block text-lg group-hover:text-primary">+91-9588430618</span>
             </a>
           </div>
           <div className="mt-12 flex flex-wrap gap-3">
@@ -465,14 +478,14 @@ function Portfolio() {
                 href={l.href}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-md border border-border px-4 py-2.5 font-mono text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:border-accent hover:text-accent"
+                className="rounded-full border border-ink-foreground/20 px-5 py-2.5 text-sm font-medium text-ink-muted transition-colors hover:border-primary hover:text-primary"
               >
                 {l.label} ↗
               </a>
             ))}
           </div>
-          <p className="mt-20 font-mono text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Ayush Kesharwani — built with Three.js.
+          <p className="mt-16 text-xs text-ink-muted">
+            © {new Date().getFullYear()} Ayush Kesharwani — Pune, India.
           </p>
         </div>
       </section>
@@ -482,22 +495,21 @@ function Portfolio() {
 
 function Section({
   id,
-  hash,
+  label,
   title,
   children,
 }: {
   id: string;
-  hash: string;
+  label: string;
   title: string;
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-20 border-t border-border">
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-        <div className="mb-10 flex items-baseline gap-4">
-          <span className="font-mono text-xs text-primary">{hash}</span>
-          <h2 className="text-[clamp(1.6rem,4vw,2.5rem)] font-semibold">{title}</h2>
-        </div>
+    <section id={id} className="scroll-mt-24">
+      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+        <p className="eyebrow text-primary">{label}</p>
+        <h2 className="mt-3 text-[clamp(1.9rem,4vw,2.75rem)] font-bold">{title}</h2>
+        <div className="mt-4 mb-10 h-1 w-16 rounded-full bg-primary" />
         {children}
       </div>
     </section>
