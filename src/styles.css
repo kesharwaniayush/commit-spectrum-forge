@@ -165,9 +165,10 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3 {
+  h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    letter-spacing: -0.03em;
   }
   :focus-visible {
     outline: 2px solid var(--primary);
@@ -181,12 +182,19 @@
 }
 
 @utility eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted-foreground);
 }
+
+@utility blob {
+  border-radius: 999px 999px 28px 28px;
+  background: var(--primary);
+}
+
 
 @utility grid-fade {
   background-image:
