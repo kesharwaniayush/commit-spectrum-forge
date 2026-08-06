@@ -16,7 +16,7 @@ export default function CommitScape() {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 200);
-    camera.position.set(0, 18, 26);
+    camera.position.set(0, 20, 40);
     camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -46,7 +46,7 @@ export default function CommitScape() {
         const r = Math.abs(n);
         const wave = 0.55 + 0.45 * Math.sin((x / COLS) * Math.PI * 2 - 0.6);
         const intensity = Math.pow(r, 1.7) * wave;
-        const h = 0.25 + intensity * 6.5;
+        const h = 0.25 + intensity * 5;
 
         const color =
           intensity < 0.12
@@ -103,7 +103,7 @@ export default function CommitScape() {
         cur.x += (target.x - cur.x) * 0.05;
         cur.y += (target.y - cur.y) * 0.05;
         group.rotation.z = cur.x * 0.05;
-        camera.position.y = 18 + cur.y * -3;
+        camera.position.y = 20 + cur.y * -3;
         camera.position.x = cur.x * 3;
         camera.lookAt(0, 1, 0);
         for (const b of bars) {
