@@ -222,7 +222,7 @@ function Portfolio() {
             </div>
           </div>
 
-          <div className="relative z-20 -mt-6 flex flex-wrap items-center justify-center gap-3 pb-16">
+          <div className="relative z-20 mt-10 flex flex-wrap items-center justify-center gap-3 pb-20">
             <a
               href="#projects"
               className="rounded-full bg-card px-6 py-3 text-sm font-semibold text-foreground shadow-md ring-1 ring-primary/60 transition-transform hover:-translate-y-0.5"
