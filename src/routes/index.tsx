@@ -202,15 +202,16 @@ function Portfolio() {
 
             {/* photo */}
             <div className="order-1 mx-auto md:order-2">
-              <div className="relative mx-auto w-[min(78vw,360px)]">
-                <div className="blob absolute inset-x-0 bottom-0 top-16" aria-hidden="true" />
+              <div className="relative mx-auto w-[min(78vw,380px)]">
+                <div className="blob absolute -inset-x-6 bottom-6 top-20" aria-hidden="true" />
                 <img
                   src={photo.url}
                   alt="Portrait of Ayush Kesharwani"
-                  className="relative z-10 w-full object-contain"
+                  className="relative z-10 w-full rounded-3xl object-cover shadow-xl"
                 />
               </div>
             </div>
+
 
             {/* right stat */}
             <div className="rise order-3 max-w-xs justify-self-end text-right md:pb-16">
