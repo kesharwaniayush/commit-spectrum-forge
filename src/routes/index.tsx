@@ -2,6 +2,19 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import photo from "@/assets/photo.asset.json";
 import resume from "@/assets/resume.asset.json";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { ContactForm } from "@/components/ContactForm";
+
+const ROLES = ["Software Engineer", "Full-Stack Developer", "AI/ML Enthusiast", "Problem Solver"];
+
+function useRotatingRole() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((v) => (v + 1) % ROLES.length), 2200);
+    return () => clearInterval(t);
+  }, []);
+  return ROLES[i];
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
