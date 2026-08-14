@@ -134,6 +134,7 @@ const PROJECTS = [
 
 function Portfolio() {
   const [active, setActive] = useState("top");
+  const role = useRotatingRole();
 
   useEffect(() => {
     const obs = new IntersectionObserver(
