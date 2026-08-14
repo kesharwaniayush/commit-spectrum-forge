@@ -469,40 +469,42 @@ function Portfolio() {
       >
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <p className="eyebrow text-primary">Contact</p>
-          <h2 className="mt-4 text-[clamp(2rem,5vw,3.5rem)] font-bold leading-[1.05]">
-            Open to internships,
-            <br />
-            <span className="text-primary">full-stack &amp; AI roles.</span>
-          </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            <a href={LINKS.email} className="group block">
-              <span className="eyebrow block text-ink-muted">Email</span>
-              <span className="mt-1 block text-lg group-hover:text-primary">
-                ayush.kesharwani.work@gmail.com
-              </span>
-            </a>
-            <a href={LINKS.phone} className="group block">
-              <span className="eyebrow block text-ink-muted">Phone</span>
-              <span className="mt-1 block text-lg group-hover:text-primary">+91-9588430618</span>
-            </a>
-          </div>
-          <div className="mt-12 flex flex-wrap gap-3">
-            {[
-              { href: LINKS.github, label: "GitHub" },
-              { href: LINKS.linkedin, label: "LinkedIn" },
-              { href: LINKS.leetcode, label: "LeetCode" },
-              { href: resume.url, label: "Résumé" },
-            ].map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-ink-foreground/20 px-5 py-2.5 text-sm font-medium text-ink-muted transition-colors hover:border-primary hover:text-primary"
-              >
-                {l.label} ↗
-              </a>
-            ))}
+          <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-14">
+            <div>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
+                <a href={LINKS.email} className="group block">
+                  <span className="eyebrow block text-ink-muted">Email</span>
+                  <span className="mt-1 block text-lg group-hover:text-primary">
+                    ayush.kesharwani.work@gmail.com
+                  </span>
+                </a>
+                <a href={LINKS.phone} className="group block">
+                  <span className="eyebrow block text-ink-muted">Phone</span>
+                  <span className="mt-1 block text-lg group-hover:text-primary">
+                    +91-9588430618
+                  </span>
+                </a>
+              </div>
+              <div className="mt-10 flex flex-wrap gap-3">
+                {[
+                  { href: LINKS.github, label: "GitHub" },
+                  { href: LINKS.linkedin, label: "LinkedIn" },
+                  { href: LINKS.leetcode, label: "LeetCode" },
+                  { href: resume.url, label: "Résumé" },
+                ].map((l) => (
+                  <a
+                    key={l.label}
+                    href={l.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full border border-ink-foreground/20 px-5 py-2.5 text-sm font-medium text-ink-muted transition-colors hover:border-primary hover:text-primary"
+                  >
+                    {l.label} ↗
+                  </a>
+                ))}
+              </div>
+            </div>
+            <ContactForm />
           </div>
           <p className="mt-16 text-xs text-ink-muted">
             © {new Date().getFullYear()} Ayush Kesharwani — Pune, India.
