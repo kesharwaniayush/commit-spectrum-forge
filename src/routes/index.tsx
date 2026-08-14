@@ -197,10 +197,13 @@ function Portfolio() {
             <span className="inline-block rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-muted-foreground">
               Hello!
             </span>
-            <h1 className="mx-auto mt-5 max-w-4xl text-[clamp(2.4rem,7vw,5rem)] font-extrabold leading-[1.02]">
-              I&apos;m <span className="text-primary">Ayush,</span>
+            <h1 className="mx-auto mt-5 max-w-4xl text-[clamp(2.2rem,6.4vw,4.6rem)] font-extrabold leading-[1.04]">
+              I&apos;m <span className="text-primary">Ayush Kesharwani</span>
               <br />
-              Software Engineer
+              <span key={role} className="rise inline-block">
+                {role}
+              </span>
+              <span className="ml-1 inline-block animate-pulse text-primary">|</span>
             </h1>
           </div>
 
