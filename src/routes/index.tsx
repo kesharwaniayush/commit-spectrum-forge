@@ -158,7 +158,7 @@ function Portfolio() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-transparent text-foreground">
       {/* NAV */}
       <header className="fixed inset-x-0 top-4 z-50 px-4">
         <nav className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 rounded-full bg-ink px-4 text-ink-foreground shadow-lg sm:px-6">
