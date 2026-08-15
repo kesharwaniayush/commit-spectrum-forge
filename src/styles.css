@@ -155,8 +155,12 @@
     border-color: var(--color-border);
   }
 
+  html {
+    background-color: #07080a;
+  }
+
   body {
-    background-color: var(--color-background);
+    background-color: transparent;
     color: var(--color-foreground);
   }
 }
@@ -223,4 +227,126 @@
     transition-duration: 0.01ms !important;
   }
   html { scroll-behavior: auto; }
+}
+
+/* ===== Cinematic warm aurora background (background layer only) ===== */
+.aurora-root {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: #07080a;
+}
+
+.aurora-blade {
+  position: absolute;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+  border-radius: 50%;
+}
+
+.aurora-blade-1 {
+  top: -30vh;
+  left: -20vw;
+  width: 90vw;
+  height: 70vh;
+  transform: rotate(-24deg);
+  background: linear-gradient(100deg, rgba(255, 47, 58, 0) 0%, rgba(255, 47, 58, 0.55) 35%, rgba(255, 107, 74, 0.45) 65%, rgba(255, 179, 71, 0) 100%);
+  filter: blur(120px);
+  opacity: 0.75;
+  animation: aurora-drift-1 18s ease-in-out infinite alternate;
+}
+
+.aurora-blade-2 {
+  top: 12vh;
+  right: -25vw;
+  width: 85vw;
+  height: 65vh;
+  transform: rotate(18deg);
+  background: linear-gradient(80deg, rgba(255, 179, 71, 0) 0%, rgba(255, 179, 71, 0.42) 40%, rgba(255, 107, 74, 0.4) 75%, rgba(255, 47, 58, 0) 100%);
+  filter: blur(140px);
+  opacity: 0.7;
+  animation: aurora-drift-2 21s ease-in-out infinite alternate;
+  animation-delay: -4s;
+}
+
+.aurora-blade-3 {
+  bottom: -20vh;
+  left: -15vw;
+  width: 95vw;
+  height: 70vh;
+  transform: rotate(-12deg);
+  background: linear-gradient(120deg, rgba(255, 107, 74, 0) 0%, rgba(255, 107, 74, 0.45) 45%, rgba(255, 47, 58, 0.35) 80%, rgba(7, 8, 10, 0) 100%);
+  filter: blur(150px);
+  opacity: 0.65;
+  animation: aurora-drift-3 16s ease-in-out infinite alternate;
+  animation-delay: -7s;
+}
+
+.aurora-blade-4 {
+  bottom: 5vh;
+  right: -20vw;
+  width: 70vw;
+  height: 55vh;
+  transform: rotate(32deg);
+  background: linear-gradient(140deg, rgba(255, 47, 58, 0) 0%, rgba(255, 140, 70, 0.38) 50%, rgba(255, 179, 71, 0) 100%);
+  filter: blur(130px);
+  opacity: 0.6;
+  animation: aurora-drift-4 22s ease-in-out infinite alternate;
+  animation-delay: -11s;
+}
+
+.aurora-bloom {
+  position: absolute;
+  inset: -10%;
+  mix-blend-mode: screen;
+  background: radial-gradient(60% 45% at 45% 30%, rgba(255, 107, 74, 0.2) 0%, rgba(255, 47, 58, 0.1) 45%, rgba(7, 8, 10, 0) 75%);
+  filter: blur(60px);
+  opacity: 0.9;
+  animation: aurora-breathe 19s ease-in-out infinite alternate;
+}
+
+.aurora-grain-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+}
+
+.aurora-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(7, 8, 10, 0) 35%, rgba(7, 8, 10, 0.55) 72%, #07080a 100%);
+}
+
+@keyframes aurora-drift-1 {
+  0% { transform: rotate(-24deg) translate(0, 0) scale(1.08); opacity: 0.78; }
+  50% { transform: rotate(-19deg) translate(4vw, 3vh) scale(1); opacity: 0.6; }
+  100% { transform: rotate(-27deg) translate(-3vw, 5vh) scale(1.05); opacity: 0.7; }
+}
+
+@keyframes aurora-drift-2 {
+  0% { transform: rotate(18deg) translate(0, 0) scale(1.1); opacity: 0.72; }
+  50% { transform: rotate(23deg) translate(-5vw, 4vh) scale(1.02); opacity: 0.55; }
+  100% { transform: rotate(14deg) translate(2vw, -3vh) scale(1.06); opacity: 0.66; }
+}
+
+@keyframes aurora-drift-3 {
+  0% { transform: rotate(-12deg) translate(0, 0) scale(1.09); opacity: 0.68; }
+  50% { transform: rotate(-8deg) translate(5vw, -4vh) scale(1.01); opacity: 0.5; }
+  100% { transform: rotate(-15deg) translate(-4vw, 2vh) scale(1.05); opacity: 0.62; }
+}
+
+@keyframes aurora-drift-4 {
+  0% { transform: rotate(32deg) translate(0, 0) scale(1.12); opacity: 0.64; }
+  50% { transform: rotate(27deg) translate(-4vw, -5vh) scale(1.03); opacity: 0.46; }
+  100% { transform: rotate(36deg) translate(3vw, 3vh) scale(1.07); opacity: 0.58; }
+}
+
+@keyframes aurora-breathe {
+  0% { transform: scale(1.05); opacity: 0.95; }
+  100% { transform: scale(1); opacity: 0.7; }
 }
