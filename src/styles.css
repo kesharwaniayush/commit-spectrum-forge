@@ -155,8 +155,12 @@
     border-color: var(--color-border);
   }
 
+  html {
+    background-color: #07080a;
+  }
+
   body {
-    background-color: var(--color-background);
+    background-color: transparent;
     color: var(--color-foreground);
   }
 }
