@@ -4,6 +4,8 @@ import photo from "@/assets/photo.asset.json";
 import resume from "@/assets/resume.asset.json";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ContactForm } from "@/components/ContactForm";
+import { SkillSphere } from "@/components/SkillSphere";
+
 
 const ROLES = ["Software Engineer", "Full-Stack Developer", "AI/ML Enthusiast", "Problem Solver"];
 
@@ -89,6 +91,9 @@ const SKILLS: { title: string; items: string[] }[] = [
   },
 ];
 
+const ALL_SKILLS = SKILLS.flatMap((s) => s.items);
+
+
 const PROJECTS = [
   {
     no: "01",
@@ -134,7 +139,9 @@ const PROJECTS = [
 
 function Portfolio() {
   const [active, setActive] = useState("top");
+  const [skillView, setSkillView] = useState<"grid" | "sphere">("grid");
   const role = useRotatingRole();
+
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -194,35 +201,57 @@ function Portfolio() {
       {/* HERO */}
       <section id="top" className="relative overflow-hidden pt-28 sm:pt-32">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="rise text-center">
-            <span className="inline-block rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-muted-foreground">
-              Hello!
-            </span>
-            <h1 className="mx-auto mt-5 max-w-4xl text-[clamp(2.2rem,6.4vw,4.6rem)] font-extrabold leading-[1.04]">
-              I&apos;m <span className="text-primary">Ayush Kesharwani</span>
-              <br />
-              <span key={role} className="rise inline-block">
-                {role}
+          <div className="grid items-center gap-12 pb-20 md:grid-cols-[1.05fr_0.95fr]">
+            {/* left copy */}
+            <div className="rise order-2 md:order-1">
+              <span className="inline-block rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-muted-foreground">
+                Hello!
               </span>
-              <span className="ml-1 inline-block animate-pulse text-primary">|</span>
-            </h1>
-          </div>
+              <h1 className="mt-5 text-[clamp(2.1rem,5.4vw,3.9rem)] font-extrabold leading-[1.06]">
+                I&apos;m <span className="text-primary">Ayush Kesharwani</span>
+                <br />
+                <span key={role} className="rise inline-block">
+                  {role}
+                </span>
+                <span className="ml-1 inline-block animate-pulse text-primary">|</span>
+              </h1>
 
-          <div className="relative mt-10 grid items-end gap-10 md:grid-cols-[1fr_auto_1fr]">
-            {/* left stat */}
-            <div className="rise order-2 max-w-xs md:order-1 md:pb-16">
-              <p className="text-4xl font-bold leading-none text-primary">“</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
                 Full-stack &amp; AI/ML engineer — REST-first back-ends, cloud deployment and
                 production LLM applications.
               </p>
-              <p className="mt-7 font-display text-3xl font-bold">8+</p>
-              <p className="text-sm text-muted-foreground">Full-stack features shipped</p>
+
+              <div className="mt-7 flex items-center gap-10">
+                <div>
+                  <p className="font-display text-3xl font-bold">8+</p>
+                  <p className="text-sm text-muted-foreground">Full-stack features shipped</p>
+                </div>
+                <div className="h-10 w-px bg-border" />
+                <div>
+                  <p className="font-display text-3xl font-bold">4</p>
+                  <p className="text-sm text-muted-foreground">Shipped AI products</p>
+                </div>
+              </div>
+
+              <div className="mt-9 flex flex-wrap items-center gap-3">
+                <a
+                  href="#projects"
+                  className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-transform hover:-translate-y-0.5"
+                >
+                  Portfolio ↗
+                </a>
+                <a
+                  href={LINKS.email}
+                  className="rounded-full bg-card px-6 py-3 text-sm font-semibold text-foreground shadow-md ring-1 ring-border transition-transform hover:-translate-y-0.5"
+                >
+                  Hire Me
+                </a>
+              </div>
             </div>
 
-            {/* photo */}
-            <div className="order-1 mx-auto md:order-2">
-              <div className="relative mx-auto w-[min(78vw,380px)]">
+            {/* photo right */}
+            <div className="order-1 md:order-2">
+              <div className="relative mx-auto w-[min(78vw,400px)]">
                 <div className="blob absolute -inset-x-6 bottom-6 top-20" aria-hidden="true" />
                 <img
                   src={photo.url}
@@ -231,70 +260,74 @@ function Portfolio() {
                 />
               </div>
             </div>
-
-
-            {/* right stat */}
-            <div className="rise order-3 max-w-xs justify-self-end text-right md:pb-16">
-              <p className="text-lg tracking-widest text-primary">★★★★★</p>
-              <p className="mt-2 font-display text-3xl font-bold">9.29</p>
-              <p className="text-sm text-muted-foreground">SGPA · B.E. Computer Engineering</p>
-              <div className="mt-4 h-px w-24 bg-foreground/70 md:ml-auto" />
-            </div>
-          </div>
-
-          <div className="relative z-20 mt-10 flex flex-wrap items-center justify-center gap-3 pb-20">
-            <a
-              href="#projects"
-              className="rounded-full bg-card px-6 py-3 text-sm font-semibold text-foreground shadow-md ring-1 ring-primary/60 transition-transform hover:-translate-y-0.5"
-            >
-              Portfolio ↗
-            </a>
-            <a
-              href={LINKS.email}
-              className="rounded-full bg-card px-6 py-3 text-sm font-semibold text-foreground shadow-md ring-1 ring-border transition-transform hover:-translate-y-0.5"
-            >
-              Hire Me
-            </a>
           </div>
         </div>
       </section>
+
 
       {/* SKILLS — dark band */}
       <section id="skills" className="scroll-mt-24 rounded-t-[2rem] bg-ink text-ink-foreground">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 className="text-[clamp(1.9rem,4vw,2.75rem)] font-bold">
-              My <span className="text-primary">Skills</span>
-            </h2>
-            <p className="max-w-sm text-sm leading-relaxed text-ink-muted">
-              A practical stack spanning product front-ends, scalable back-end services and applied
-              machine learning.
-            </p>
+            <div>
+              <h2 className="text-[clamp(1.9rem,4vw,2.75rem)] font-bold">
+                My <span className="text-primary">Skills</span>
+              </h2>
+              <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-muted">
+                A practical stack spanning product front-ends, scalable back-end services and
+                applied machine learning.
+              </p>
+            </div>
+            <div className="inline-flex rounded-full border border-ink-foreground/20 p-1">
+              {(["grid", "sphere"] as const).map((v) => (
+                <button
+                  key={v}
+                  type="button"
+                  onClick={() => setSkillView(v)}
+                  aria-pressed={skillView === v}
+                  className={`rounded-full px-4 py-1.5 text-sm font-semibold capitalize transition-colors ${
+                    skillView === v
+                      ? "bg-primary text-primary-foreground"
+                      : "text-ink-muted hover:text-ink-foreground"
+                  }`}
+                >
+                  {v} view
+                </button>
+              ))}
+            </div>
           </div>
           <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {SKILLS.map((s) => (
-              <div
-                key={s.title}
-                className="group rounded-2xl bg-ink-foreground/[0.06] p-5 transition-colors hover:bg-primary"
-              >
-                <h3 className="text-base font-semibold">{s.title}</h3>
-                <ul className="mt-4 flex flex-wrap gap-1.5">
-                  {s.items.map((i) => (
-                    <li
-                      key={i}
-                      className="rounded-full bg-ink-foreground/10 px-2.5 py-1 text-[0.72rem] text-ink-muted transition-colors group-hover:bg-ink-foreground/20 group-hover:text-ink-foreground"
-                    >
-                      {i}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          {skillView === "grid" ? (
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {SKILLS.map((s) => (
+                <div
+                  key={s.title}
+                  className="group rounded-2xl bg-ink-foreground/[0.06] p-5 transition-colors hover:bg-primary"
+                >
+                  <h3 className="text-base font-semibold">{s.title}</h3>
+                  <ul className="mt-4 flex flex-wrap gap-1.5">
+                    {s.items.map((i) => (
+                      <li
+                        key={i}
+                        className="rounded-full bg-ink-foreground/10 px-2.5 py-1 text-[0.72rem] text-ink-muted transition-colors group-hover:bg-ink-foreground/20 group-hover:text-ink-foreground"
+                      >
+                        {i}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="mt-10">
+              <SkillSphere items={ALL_SKILLS} />
+              <p className="mt-4 text-center text-xs text-ink-muted">Drag to spin the sphere</p>
+            </div>
+          )}
         </div>
       </section>
+
 
       {/* ABOUT */}
       <Section id="about" label="About" title="About Me">
