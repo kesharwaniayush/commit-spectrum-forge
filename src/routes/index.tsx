@@ -4,6 +4,8 @@ import photo from "@/assets/photo.asset.json";
 import resume from "@/assets/resume.asset.json";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ContactForm } from "@/components/ContactForm";
+import { SkillSphere } from "@/components/SkillSphere";
+
 
 const ROLES = ["Software Engineer", "Full-Stack Developer", "AI/ML Enthusiast", "Problem Solver"];
 
@@ -89,6 +91,9 @@ const SKILLS: { title: string; items: string[] }[] = [
   },
 ];
 
+const ALL_SKILLS = SKILLS.flatMap((s) => s.items);
+
+
 const PROJECTS = [
   {
     no: "01",
@@ -134,7 +139,9 @@ const PROJECTS = [
 
 function Portfolio() {
   const [active, setActive] = useState("top");
+  const [skillView, setSkillView] = useState<"grid" | "sphere">("grid");
   const role = useRotatingRole();
+
 
   useEffect(() => {
     const obs = new IntersectionObserver(
