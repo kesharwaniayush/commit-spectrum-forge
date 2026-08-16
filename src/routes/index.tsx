@@ -5,6 +5,10 @@ import resume from "@/assets/resume.asset.json";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ContactForm } from "@/components/ContactForm";
 import { SkillSphere } from "@/components/SkillSphere";
+import devrankImg from "@/assets/devrank.jpg.asset.json";
+import legaliteaImg from "@/assets/legalitea.jpg.asset.json";
+import devpathImg from "@/assets/devpath.jpg.asset.json";
+import resumeAnalyzerImg from "@/assets/resume-analyzer.jpg.asset.json";
 
 
 const ROLES = ["Software Engineer", "Full-Stack Developer", "AI/ML Enthusiast", "Problem Solver"];
@@ -98,6 +102,7 @@ const PROJECTS = [
   {
     no: "01",
     name: "DevRank",
+    image: devrankImg.url,
     stack: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "GitHub API", "Gemini API"],
     bullets: [
       "AI-powered GitHub analytics platform that analyzed 1,000+ profiles to rank developers by coding activity, repositories and technical skills.",
@@ -108,6 +113,7 @@ const PROJECTS = [
   {
     no: "02",
     name: "LegaliTea AI",
+    image: legaliteaImg.url,
     stack: ["React.js", "Node.js", "Express.js", "Llama 3.3-70B", "REST APIs"],
     bullets: [
       "Scalable AI legal-document analysis platform on Llama 3.3-70B with RESTful back-end APIs, real-time analysis, multi-language support and AI fallback for reliability.",
@@ -118,6 +124,7 @@ const PROJECTS = [
   {
     no: "03",
     name: "DevPath",
+    image: devpathImg.url,
     stack: ["React.js", "TypeScript", "Tailwind CSS", "AI"],
     bullets: [
       "Guided learning-path builder that turns a developer's goals into structured, trackable roadmaps.",
@@ -128,6 +135,7 @@ const PROJECTS = [
   {
     no: "04",
     name: "AI Resume Analyzer",
+    image: resumeAnalyzerImg.url,
     stack: ["React.js", "TypeScript", "React Router", "Tailwind CSS", "Gemini API"],
     bullets: [
       "AI tool evaluating ATS compatibility, keyword relevance and formatting quality with secure auth, cloud storage and resume-to-JD scoring to identify skill gaps.",
@@ -186,14 +194,6 @@ function Portfolio() {
           </ul>
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <a
-              href={resume.url}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              Résumé
-            </a>
           </div>
         </nav>
       </header>
@@ -235,10 +235,12 @@ function Portfolio() {
 
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <a
-                  href="#projects"
+                  href={resume.url}
+                  target="_blank"
+                  rel="noreferrer"
                   className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-transform hover:-translate-y-0.5"
                 >
-                  Portfolio ↗
+                  Résumé ↗
                 </a>
                 <a
                   href={LINKS.email}
@@ -401,8 +403,17 @@ function Portfolio() {
           {PROJECTS.map((p) => (
             <article
               key={p.name}
-              className="flex flex-col rounded-2xl border border-border bg-card p-7 shadow-sm transition-shadow hover:shadow-lg"
+              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-lg"
             >
+              <img
+                src={p.image}
+                alt={`${p.name} interface preview`}
+                loading="lazy"
+                width={1200}
+                height={752}
+                className="aspect-[16/10] w-full border-b border-border object-cover"
+              />
+              <div className="flex flex-1 flex-col p-7">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-semibold text-primary">{p.no}</span>
                 <a
@@ -451,6 +462,7 @@ function Portfolio() {
                 >
                   Source
                 </a>
+              </div>
               </div>
             </article>
           ))}
@@ -539,11 +551,82 @@ function Portfolio() {
             </div>
             <ContactForm />
           </div>
-          <p className="mt-16 text-xs text-ink-muted">
-            © {new Date().getFullYear()} Ayush Kesharwani — Pune, India.
-          </p>
         </div>
       </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-ink-foreground/10 bg-ink text-ink-foreground">
+        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            <div>
+              <a href="#top" className="flex items-center gap-2">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                  A
+                </span>
+                <span className="text-lg font-semibold tracking-tight">Ayush Kesharwani</span>
+              </a>
+              <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-muted">
+                Full-stack &amp; AI/ML engineer building REST-first back-ends, cloud deployments and
+                production LLM applications.
+              </p>
+            </div>
+            <div>
+              <p className="eyebrow text-ink-muted">Navigate</p>
+              <ul className="mt-4 space-y-2.5 text-sm">
+                {NAV.map((n) => (
+                  <li key={n.id}>
+                    <a href={`#${n.id}`} className="text-ink-muted transition-colors hover:text-primary">
+                      {n.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="eyebrow text-ink-muted">Elsewhere</p>
+              <ul className="mt-4 space-y-2.5 text-sm">
+                {[
+                  { href: LINKS.github, label: "GitHub" },
+                  { href: LINKS.linkedin, label: "LinkedIn" },
+                  { href: LINKS.leetcode, label: "LeetCode" },
+                  { href: resume.url, label: "Résumé" },
+                ].map((l) => (
+                  <li key={l.label}>
+                    <a
+                      href={l.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-ink-muted transition-colors hover:text-primary"
+                    >
+                      {l.label} ↗
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="eyebrow text-ink-muted">Get in touch</p>
+              <ul className="mt-4 space-y-2.5 text-sm">
+                <li>
+                  <a href={LINKS.email} className="text-ink-muted transition-colors hover:text-primary">
+                    ayush.kesharwani.work@gmail.com
+                  </a>
+                </li>
+                <li>
+                  <a href={LINKS.phone} className="text-ink-muted transition-colors hover:text-primary">
+                    +91-9588430618
+                  </a>
+                </li>
+                <li className="text-ink-muted">Pune, Maharashtra, India</li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-12 flex flex-col gap-2 border-t border-ink-foreground/10 pt-6 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
+            <p>© {new Date().getFullYear()} Ayush Kesharwani. All rights reserved.</p>
+            <p>Built with React, TanStack Start &amp; Tailwind CSS.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

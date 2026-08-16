@@ -77,77 +77,77 @@
   --card-foreground: oklch(0.19 0.008 60);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.19 0.008 60);
-  --primary: oklch(0.52 0.13 250);
+  --primary: oklch(0.55 0.12 236);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.955 0.004 90);
   --secondary-foreground: oklch(0.19 0.008 60);
   --muted: oklch(0.955 0.004 90);
   --muted-foreground: oklch(0.52 0.012 70);
-  --accent: oklch(0.52 0.13 250);
+  --accent: oklch(0.55 0.12 236);
   --accent-foreground: oklch(0.99 0 0);
   --destructive: oklch(0.58 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
   --border: oklch(0.9 0.005 85);
   --input: oklch(0.9 0.005 85);
-  --ring: oklch(0.52 0.13 250);
+  --ring: oklch(0.55 0.12 236);
   --surface-alt: oklch(0.955 0.004 90);
-  --ink: oklch(0.24 0.03 255);
+  --ink: oklch(0.22 0.03 250);
   --ink-foreground: oklch(0.98 0.002 90);
   --ink-muted: oklch(0.72 0.006 80);
-  --chart-1: oklch(0.52 0.13 250);
+  --chart-1: oklch(0.55 0.12 236);
   --chart-2: oklch(0.185 0.004 60);
   --chart-3: oklch(0.52 0.012 70);
   --chart-4: oklch(0.9 0.005 85);
   --chart-5: oklch(0.955 0.004 90);
   --sidebar: oklch(1 0 0);
   --sidebar-foreground: oklch(0.19 0.008 60);
-  --sidebar-primary: oklch(0.52 0.13 250);
+  --sidebar-primary: oklch(0.55 0.12 236);
   --sidebar-primary-foreground: oklch(0.99 0 0);
   --sidebar-accent: oklch(0.955 0.004 90);
   --sidebar-accent-foreground: oklch(0.19 0.008 60);
   --sidebar-border: oklch(0.9 0.005 85);
-  --sidebar-ring: oklch(0.52 0.13 250);
+  --sidebar-ring: oklch(0.55 0.12 236);
 }
 
 
 
 .dark {
-  --background: oklch(0.17 0.015 255);
+  --background: oklch(0.165 0.018 250);
   --foreground: oklch(0.97 0.002 90);
-  --card: oklch(0.225 0.018 255);
+  --card: oklch(0.215 0.02 250);
   --card-foreground: oklch(0.97 0.002 90);
   --popover: oklch(0.215 0.006 60);
   --popover-foreground: oklch(0.97 0.002 90);
-  --primary: oklch(0.72 0.12 245);
+  --primary: oklch(0.74 0.11 224);
   --primary-foreground: oklch(0.17 0.015 255);
   --secondary: oklch(0.26 0.006 60);
   --secondary-foreground: oklch(0.97 0.002 90);
   --muted: oklch(0.26 0.006 60);
   --muted-foreground: oklch(0.74 0.008 80);
-  --accent: oklch(0.72 0.12 245);
+  --accent: oklch(0.74 0.11 224);
   --accent-foreground: oklch(0.16 0.006 60);
   --destructive: oklch(0.66 0.2 27);
   --destructive-foreground: oklch(0.99 0 0);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.72 0.12 245);
+  --ring: oklch(0.74 0.11 224);
   --surface-alt: oklch(0.215 0.006 60);
-  --ink: oklch(0.17 0.025 255);
+  --ink: oklch(0.155 0.022 250);
   --ink-foreground: oklch(0.97 0.002 90);
   --ink-muted: oklch(0.72 0.006 80);
-  --chart-1: oklch(0.72 0.12 245);
+  --chart-1: oklch(0.74 0.11 224);
   --chart-2: oklch(0.97 0.002 90);
   --chart-3: oklch(0.74 0.008 80);
   --chart-4: oklch(0.26 0.006 60);
   --chart-5: oklch(0.215 0.006 60);
   --sidebar: oklch(0.215 0.006 60);
   --sidebar-foreground: oklch(0.97 0.002 90);
-  --sidebar-primary: oklch(0.72 0.12 245);
+  --sidebar-primary: oklch(0.74 0.11 224);
   --sidebar-primary-foreground: oklch(0.16 0.006 60);
   --sidebar-accent: oklch(0.26 0.006 60);
   --sidebar-accent-foreground: oklch(0.97 0.002 90);
   --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.72 0.12 245);
+  --sidebar-ring: oklch(0.74 0.11 224);
 }
 
 @layer base {
@@ -156,7 +156,7 @@
   }
 
   html {
-    background-color: #07080a;
+    background-color: #060a12;
   }
 
   body {
@@ -236,7 +236,7 @@
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  background-color: #07080a;
+  background-color: #060a12;
 }
 
 .aurora-blade {
@@ -252,7 +252,7 @@
   width: 90vw;
   height: 70vh;
   transform: rotate(-24deg);
-  background: linear-gradient(100deg, rgba(255, 47, 58, 0) 0%, rgba(255, 47, 58, 0.55) 35%, rgba(255, 107, 74, 0.45) 65%, rgba(255, 179, 71, 0) 100%);
+  background: linear-gradient(100deg, rgba(30, 64, 120, 0) 0%, rgba(38, 88, 160, 0.5) 35%, rgba(46, 138, 160, 0.4) 65%, rgba(120, 170, 210, 0) 100%);
   filter: blur(120px);
   opacity: 0.75;
   animation: aurora-drift-1 18s ease-in-out infinite alternate;
@@ -264,7 +264,7 @@
   width: 85vw;
   height: 65vh;
   transform: rotate(18deg);
-  background: linear-gradient(80deg, rgba(255, 179, 71, 0) 0%, rgba(255, 179, 71, 0.42) 40%, rgba(255, 107, 74, 0.4) 75%, rgba(255, 47, 58, 0) 100%);
+  background: linear-gradient(80deg, rgba(120, 170, 210, 0) 0%, rgba(96, 150, 200, 0.34) 40%, rgba(46, 138, 160, 0.34) 75%, rgba(30, 64, 120, 0) 100%);
   filter: blur(140px);
   opacity: 0.7;
   animation: aurora-drift-2 21s ease-in-out infinite alternate;
@@ -277,7 +277,7 @@
   width: 95vw;
   height: 70vh;
   transform: rotate(-12deg);
-  background: linear-gradient(120deg, rgba(255, 107, 74, 0) 0%, rgba(255, 107, 74, 0.45) 45%, rgba(255, 47, 58, 0.35) 80%, rgba(7, 8, 10, 0) 100%);
+  background: linear-gradient(120deg, rgba(46, 138, 160, 0) 0%, rgba(46, 138, 160, 0.4) 45%, rgba(30, 78, 140, 0.32) 80%, rgba(6, 10, 18, 0) 100%);
   filter: blur(150px);
   opacity: 0.65;
   animation: aurora-drift-3 16s ease-in-out infinite alternate;
@@ -290,7 +290,7 @@
   width: 70vw;
   height: 55vh;
   transform: rotate(32deg);
-  background: linear-gradient(140deg, rgba(255, 47, 58, 0) 0%, rgba(255, 140, 70, 0.38) 50%, rgba(255, 179, 71, 0) 100%);
+  background: linear-gradient(140deg, rgba(30, 64, 120, 0) 0%, rgba(70, 120, 190, 0.32) 50%, rgba(120, 170, 210, 0) 100%);
   filter: blur(130px);
   opacity: 0.6;
   animation: aurora-drift-4 22s ease-in-out infinite alternate;
@@ -301,7 +301,7 @@
   position: absolute;
   inset: -10%;
   mix-blend-mode: screen;
-  background: radial-gradient(60% 45% at 45% 30%, rgba(255, 107, 74, 0.2) 0%, rgba(255, 47, 58, 0.1) 45%, rgba(7, 8, 10, 0) 75%);
+  background: radial-gradient(60% 45% at 45% 30%, rgba(46, 138, 160, 0.18) 0%, rgba(30, 78, 140, 0.1) 45%, rgba(6, 10, 18, 0) 75%);
   filter: blur(60px);
   opacity: 0.9;
   animation: aurora-breathe 19s ease-in-out infinite alternate;
@@ -319,7 +319,7 @@
 .aurora-vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(7, 8, 10, 0) 35%, rgba(7, 8, 10, 0.55) 72%, #07080a 100%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(6, 10, 18, 0) 35%, rgba(6, 10, 18, 0.55) 72%, #060a12 100%);
 }
 
 @keyframes aurora-drift-1 {
