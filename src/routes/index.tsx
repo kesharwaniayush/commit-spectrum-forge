@@ -186,14 +186,6 @@ function Portfolio() {
           </ul>
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <a
-              href={resume.url}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              Résumé
-            </a>
           </div>
         </nav>
       </header>
@@ -235,10 +227,12 @@ function Portfolio() {
 
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <a
-                  href="#projects"
+                  href={resume.url}
+                  target="_blank"
+                  rel="noreferrer"
                   className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-transform hover:-translate-y-0.5"
                 >
-                  Portfolio ↗
+                  Résumé ↗
                 </a>
                 <a
                   href={LINKS.email}
