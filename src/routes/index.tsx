@@ -437,7 +437,26 @@ function Portfolio() {
                 <span className="font-semibold text-primary">9.29/10</span>
               </p>
               <p className="mt-1 text-xs text-muted-foreground">Aug 2023 – Jul 2027</p>
+
+              <div className="mt-6 border-t border-border pt-5">
+                <h3 className="text-base font-semibold">
+                  Lord Jiveshwar English Medium School &amp; Junior College
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground">Ichalkaranji, Maharashtra</p>
+                <p className="mt-2 text-sm">H.S.C. — Intermediate (12th Class)</p>
+                <p className="mt-1 text-xs text-muted-foreground">2021 – 2023</p>
+              </div>
+
+              <div className="mt-6 border-t border-border pt-5">
+                <h3 className="text-base font-semibold">
+                  Vyankatrao High School &amp; Junior College
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground">Ichalkaranji, Maharashtra</p>
+                <p className="mt-2 text-sm">S.S.C. — 10th Class</p>
+                <p className="mt-1 text-xs text-muted-foreground">2020</p>
+              </div>
             </div>
+
           </div>
         </div>
       </Section>
