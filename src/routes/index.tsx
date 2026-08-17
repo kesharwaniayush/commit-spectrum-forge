@@ -9,6 +9,11 @@ import devrankImg from "@/assets/devrank.jpg.asset.json";
 import legaliteaImg from "@/assets/legalitea.jpg.asset.json";
 import devpathImg from "@/assets/devpath.jpg.asset.json";
 import resumeAnalyzerImg from "@/assets/resume-analyzer.jpg.asset.json";
+import gramconnectImg from "@/assets/gramconnect.jpg.asset.json";
+import voicedeskImg from "@/assets/voicedesk.jpg.asset.json";
+import studysnapImg from "@/assets/studysnap.jpg.asset.json";
+import ecommerceImg from "@/assets/ecommerce.jpg.asset.json";
+import donorsyncImg from "@/assets/donorsync.jpg.asset.json";
 
 
 const ROLES = ["Software Engineer", "Full-Stack Developer", "AI/ML Enthusiast", "Problem Solver"];
