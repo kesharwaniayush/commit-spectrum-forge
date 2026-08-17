@@ -148,6 +148,63 @@ const PROJECTS = [
     ],
     live: "https://hackathon-hacktoberfest-2025.vercel.app/",
   },
+  {
+    no: "05",
+    name: "GramConnect",
+    image: gramconnectImg.url,
+    stack: ["MongoDB", "Express.js", "React.js", "Node.js"],
+    bullets: [
+      "MERN platform digitizing rural governance processes and improving accessibility for citizens of a Gram Panchayat.",
+      "Secure authentication, role-based access control and an admin dashboard for efficient management.",
+      "Online certificate applications, grievance redressal and real-time application status tracking.",
+    ],
+    live: "https://gram-connect.vercel.app/",
+  },
+  {
+    no: "06",
+    name: "VoiceDesk",
+    image: voicedeskImg.url,
+    stack: ["Next.js", "FastAPI", "LiveKit", "OpenAI", "PostgreSQL", "Deepgram", "ElevenLabs", "Twilio"],
+    bullets: [
+      "Production-ready conversational voice agent built with LiveKit, OpenAI and Twilio for real-time phone conversations.",
+      "Real-time appointment booking, live call monitoring with take-over capability and warm transfer to human agents.",
+    ],
+    live: "https://voice-desk-iota.vercel.app/",
+  },
+  {
+    no: "07",
+    name: "StudySnap",
+    image: studysnapImg.url,
+    stack: ["FastAPI", "React.js", "MongoDB", "Pinecone", "Sentence-Transformers"],
+    bullets: [
+      "AI learning platform using RAG to deliver accurate answers grounded in the user's own study materials.",
+      "Intelligent chatbot, quiz generation and a voice assistant for interactive learning; Pinecone vector search for retrieval.",
+      "Learning analytics dashboard tracking user performance and progress.",
+    ],
+    live: "https://future-stack-gen-ai-hackathon.vercel.app/app",
+  },
+  {
+    no: "08",
+    name: "E-Commerce Next.js",
+    image: ecommerceImg.url,
+    stack: ["Next.js", "React.js", "TypeScript", "Bootstrap", "MUI"],
+    bullets: [
+      "Modern e-commerce front-end with multiple storefront layouts, dynamic product pages and complete purchase flows.",
+      "Cart, checkout, wishlist and product comparison plus an admin-style dashboard with analytics, data tables and reusable UI components.",
+    ],
+    live: "https://ecommerce-nextjs-main-neon.vercel.app/",
+  },
+  {
+    no: "09",
+    name: "Donor Sync",
+    image: donorsyncImg.url,
+    stack: ["MongoDB", "React.js", "Node.js", "Google Gemini API"],
+    bullets: [
+      "Blood bank management platform connecting donors, hospitals and donation organizations.",
+      "Centralized database of donors, hospitals and active blood donation drives.",
+      "Improves healthcare accessibility with faster donor discovery and efficient donation coordination.",
+    ],
+  },
 ];
 
 function Portfolio() {
