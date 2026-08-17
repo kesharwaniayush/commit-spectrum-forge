@@ -470,7 +470,7 @@ function Portfolio() {
 
       {/* PROJECTS */}
       <Section id="projects" label="Portfolio" title="Selected Projects">
-        <div className="grid gap-5 lg:grid-cols-2">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((p) => (
             <article
               key={p.name}
@@ -484,21 +484,23 @@ function Portfolio() {
                 height={752}
                 className="aspect-[16/10] w-full border-b border-border object-cover"
               />
-              <div className="flex flex-1 flex-col p-7">
+              <div className="flex flex-1 flex-col p-6">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-semibold text-primary">{p.no}</span>
-                <a
-                  href={p.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Open ${p.name}`}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform hover:-translate-y-0.5"
-                >
-                  ↗
-                </a>
+                {p.live ? (
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${p.name}`}
+                    className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform hover:-translate-y-0.5"
+                  >
+                    ↗
+                  </a>
+                ) : null}
               </div>
-              <h3 className="mt-3 text-2xl font-bold">{p.name}</h3>
-              <ul className="mt-4 flex flex-wrap gap-1.5">
+              <h3 className="mt-3 text-xl font-bold">{p.name}</h3>
+              <ul className="mt-3 flex flex-wrap gap-1.5">
                 {p.stack.map((s) => (
                   <li
                     key={s}
@@ -508,23 +510,25 @@ function Portfolio() {
                   </li>
                 ))}
               </ul>
-              <ul className="mt-5 flex-1 space-y-3">
+              <ul className="mt-4 flex-1 space-y-2.5">
                 {p.bullets.map((b) => (
-                  <li key={b} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                  <li key={b} className="flex gap-2.5 text-[0.82rem] leading-relaxed text-muted-foreground">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                     {b}
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 flex gap-4 text-sm font-medium">
-                <a
-                  href={p.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-primary underline-offset-4 hover:underline"
-                >
-                  Live site
-                </a>
+              <div className="mt-5 flex gap-4 text-sm font-medium">
+                {p.live ? (
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-primary underline-offset-4 hover:underline"
+                  >
+                    Live site
+                  </a>
+                ) : null}
                 <a
                   href={LINKS.github}
                   target="_blank"
