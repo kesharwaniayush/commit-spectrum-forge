@@ -103,7 +103,16 @@ const SKILLS: { title: string; items: string[] }[] = [
 const ALL_SKILLS = SKILLS.flatMap((s) => s.items);
 
 
-const PROJECTS = [
+type Project = {
+  no: string;
+  name: string;
+  image: string;
+  stack: string[];
+  bullets: string[];
+  live?: string;
+};
+
+const PROJECTS: Project[] = [
   {
     no: "01",
     name: "DevRank",
