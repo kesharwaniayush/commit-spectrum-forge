@@ -9,6 +9,11 @@ import devrankImg from "@/assets/devrank.jpg.asset.json";
 import legaliteaImg from "@/assets/legalitea.jpg.asset.json";
 import devpathImg from "@/assets/devpath.jpg.asset.json";
 import resumeAnalyzerImg from "@/assets/resume-analyzer.jpg.asset.json";
+import gramconnectImg from "@/assets/gramconnect.jpg.asset.json";
+import voicedeskImg from "@/assets/voicedesk.jpg.asset.json";
+import studysnapImg from "@/assets/studysnap.jpg.asset.json";
+import ecommerceImg from "@/assets/ecommerce.jpg.asset.json";
+import donorsyncImg from "@/assets/donorsync.jpg.asset.json";
 
 
 const ROLES = ["Software Engineer", "Full-Stack Developer", "AI/ML Enthusiast", "Problem Solver"];
@@ -98,7 +103,16 @@ const SKILLS: { title: string; items: string[] }[] = [
 const ALL_SKILLS = SKILLS.flatMap((s) => s.items);
 
 
-const PROJECTS = [
+type Project = {
+  no: string;
+  name: string;
+  image: string;
+  stack: string[];
+  bullets: string[];
+  live?: string;
+};
+
+const PROJECTS: Project[] = [
   {
     no: "01",
     name: "DevRank",
@@ -142,6 +156,63 @@ const PROJECTS = [
       "Reusable component-level front-end architecture with clean separation of concerns and unit-tested key UI components.",
     ],
     live: "https://hackathon-hacktoberfest-2025.vercel.app/",
+  },
+  {
+    no: "05",
+    name: "GramConnect",
+    image: gramconnectImg.url,
+    stack: ["MongoDB", "Express.js", "React.js", "Node.js"],
+    bullets: [
+      "MERN platform digitizing rural governance processes and improving accessibility for citizens of a Gram Panchayat.",
+      "Secure authentication, role-based access control and an admin dashboard for efficient management.",
+      "Online certificate applications, grievance redressal and real-time application status tracking.",
+    ],
+    live: "https://gram-connect.vercel.app/",
+  },
+  {
+    no: "06",
+    name: "VoiceDesk",
+    image: voicedeskImg.url,
+    stack: ["Next.js", "FastAPI", "LiveKit", "OpenAI", "PostgreSQL", "Deepgram", "ElevenLabs", "Twilio"],
+    bullets: [
+      "Production-ready conversational voice agent built with LiveKit, OpenAI and Twilio for real-time phone conversations.",
+      "Real-time appointment booking, live call monitoring with take-over capability and warm transfer to human agents.",
+    ],
+    live: "https://voice-desk-iota.vercel.app/",
+  },
+  {
+    no: "07",
+    name: "StudySnap",
+    image: studysnapImg.url,
+    stack: ["FastAPI", "React.js", "MongoDB", "Pinecone", "Sentence-Transformers"],
+    bullets: [
+      "AI learning platform using RAG to deliver accurate answers grounded in the user's own study materials.",
+      "Intelligent chatbot, quiz generation and a voice assistant for interactive learning; Pinecone vector search for retrieval.",
+      "Learning analytics dashboard tracking user performance and progress.",
+    ],
+    live: "https://future-stack-gen-ai-hackathon.vercel.app/app",
+  },
+  {
+    no: "08",
+    name: "E-Commerce Next.js",
+    image: ecommerceImg.url,
+    stack: ["Next.js", "React.js", "TypeScript", "Bootstrap", "MUI"],
+    bullets: [
+      "Modern e-commerce front-end with multiple storefront layouts, dynamic product pages and complete purchase flows.",
+      "Cart, checkout, wishlist and product comparison plus an admin-style dashboard with analytics, data tables and reusable UI components.",
+    ],
+    live: "https://ecommerce-nextjs-main-neon.vercel.app/",
+  },
+  {
+    no: "09",
+    name: "Donor Sync",
+    image: donorsyncImg.url,
+    stack: ["MongoDB", "React.js", "Node.js", "Google Gemini API"],
+    bullets: [
+      "Blood bank management platform connecting donors, hospitals and donation organizations.",
+      "Centralized database of donors, hospitals and active blood donation drives.",
+      "Improves healthcare accessibility with faster donor discovery and efficient donation coordination.",
+    ],
   },
 ];
 
@@ -399,7 +470,7 @@ function Portfolio() {
 
       {/* PROJECTS */}
       <Section id="projects" label="Portfolio" title="Selected Projects">
-        <div className="grid gap-5 lg:grid-cols-2">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((p) => (
             <article
               key={p.name}
@@ -413,21 +484,23 @@ function Portfolio() {
                 height={752}
                 className="aspect-[16/10] w-full border-b border-border object-cover"
               />
-              <div className="flex flex-1 flex-col p-7">
+              <div className="flex flex-1 flex-col p-6">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-semibold text-primary">{p.no}</span>
-                <a
-                  href={p.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Open ${p.name}`}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform hover:-translate-y-0.5"
-                >
-                  ↗
-                </a>
+                {p.live ? (
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${p.name}`}
+                    className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform hover:-translate-y-0.5"
+                  >
+                    ↗
+                  </a>
+                ) : null}
               </div>
-              <h3 className="mt-3 text-2xl font-bold">{p.name}</h3>
-              <ul className="mt-4 flex flex-wrap gap-1.5">
+              <h3 className="mt-3 text-xl font-bold">{p.name}</h3>
+              <ul className="mt-3 flex flex-wrap gap-1.5">
                 {p.stack.map((s) => (
                   <li
                     key={s}
@@ -437,23 +510,25 @@ function Portfolio() {
                   </li>
                 ))}
               </ul>
-              <ul className="mt-5 flex-1 space-y-3">
+              <ul className="mt-4 flex-1 space-y-2.5">
                 {p.bullets.map((b) => (
-                  <li key={b} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                  <li key={b} className="flex gap-2.5 text-[0.82rem] leading-relaxed text-muted-foreground">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                     {b}
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 flex gap-4 text-sm font-medium">
-                <a
-                  href={p.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-primary underline-offset-4 hover:underline"
-                >
-                  Live site
-                </a>
+              <div className="mt-5 flex gap-4 text-sm font-medium">
+                {p.live ? (
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-primary underline-offset-4 hover:underline"
+                  >
+                    Live site
+                  </a>
+                ) : null}
                 <a
                   href={LINKS.github}
                   target="_blank"
