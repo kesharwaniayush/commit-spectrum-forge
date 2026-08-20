@@ -489,6 +489,8 @@ function Portfolio() {
             {[
               "Developed 8+ full-stack features using React.js, Node.js and REST APIs, improving performance and reducing page load time by 25%.",
               "Optimized backend performance by resolving 30+ bugs and implementing CI/CD, reducing deployment time by 75%.",
+              "Collaborated in Agile development workflows, contributing to feature planning, debugging, code reviews, and iterative releases.",
+              "Built an LLM-powered document-intelligence application to process and extract meaningful insights from documents.",
             ].map((b) => (
               <li key={b} className="flex gap-3 leading-relaxed text-muted-foreground">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
