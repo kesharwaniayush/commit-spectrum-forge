@@ -278,11 +278,6 @@
   }
 }
 
-/* On a light surface, screen washes out — swap to multiply so the
-   blueprint reads correctly in light mode. */
-html:not(.dark) .aura-layer-3 {
-  mix-blend-mode: multiply;
-}
 
 @media (prefers-reduced-motion: reduce) {
   .aura-layer-3 {
