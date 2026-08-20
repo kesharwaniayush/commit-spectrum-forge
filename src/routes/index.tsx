@@ -416,16 +416,14 @@ function Portfolio() {
           </div>
           <div>
             <p className="text-lg leading-relaxed">
-              I'm Ayush Kesharwani — a final-year Computer Engineering student and software engineer
-              who builds end-to-end products, from clean REST APIs and scalable back-ends to
-              responsive React front-ends. I care about writing maintainable code, shipping
-              production-ready features, and learning deeply how systems work under the hood.
-            </p>
-            <p className="mt-5 leading-relaxed text-muted-foreground">
-              My work spans full-stack web development, AI/ML integration and cloud deployment —
-              including an LLM-powered document-intelligence app and a GitHub-analytics ranking
-              engine. I'm comfortable in Agile workflows: feature planning, debugging, code reviews
-              and iterative releases, with strong fundamentals in DSA, OOP and system design.
+              I'm Ayush Kesharwani — a final-year Computer Engineering student and software
+              engineer building end-to-end products, from clean REST APIs and scalable back-ends to
+              responsive React front-ends. My work spans full-stack web development, AI/ML
+              integration and cloud deployment — including an LLM-powered document-intelligence app
+              and a GitHub-analytics ranking engine. I'm comfortable in Agile workflows (feature
+              planning, debugging, code reviews, iterative releases) with strong fundamentals in
+              DSA, OOP and system design, and I care about writing maintainable, production-ready
+              code.
             </p>
             <div className="mt-8 rounded-2xl border border-border bg-card p-6 shadow-sm">
               <p className="eyebrow">Education</p>
