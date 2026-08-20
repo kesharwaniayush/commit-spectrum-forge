@@ -416,15 +416,16 @@ function Portfolio() {
           </div>
           <div>
             <p className="text-lg leading-relaxed">
-              Software engineer with experience across the full development lifecycle — REST API
-              design, cloud deployment and AI/ML model integration. Skilled in full-stack
-              development, scalable back-end systems and production-ready AI applications using
-              modern frameworks.
+              I'm Ayush Kesharwani — a final-year Computer Engineering student and software engineer
+              who builds end-to-end products, from clean REST APIs and scalable back-ends to
+              responsive React front-ends. I care about writing maintainable code, shipping
+              production-ready features, and learning deeply how systems work under the hood.
             </p>
             <p className="mt-5 leading-relaxed text-muted-foreground">
-              Strong fundamentals in DSA, OOP and Agile methodologies, with a track record of
-              delivering impactful software — from a GitHub-analytics ranking engine to LLM-powered
-              document intelligence.
+              My work spans full-stack web development, AI/ML integration and cloud deployment —
+              including an LLM-powered document-intelligence app and a GitHub-analytics ranking
+              engine. I'm comfortable in Agile workflows: feature planning, debugging, code reviews
+              and iterative releases, with strong fundamentals in DSA, OOP and system design.
             </p>
             <div className="mt-8 rounded-2xl border border-border bg-card p-6 shadow-sm">
               <p className="eyebrow">Education</p>
@@ -489,6 +490,8 @@ function Portfolio() {
             {[
               "Developed 8+ full-stack features using React.js, Node.js and REST APIs, improving performance and reducing page load time by 25%.",
               "Optimized backend performance by resolving 30+ bugs and implementing CI/CD, reducing deployment time by 75%.",
+              "Collaborated in Agile development workflows, contributing to feature planning, debugging, code reviews, and iterative releases.",
+              "Built an LLM-powered document-intelligence application to process and extract meaningful insights from documents.",
             ].map((b) => (
               <li key={b} className="flex gap-3 leading-relaxed text-muted-foreground">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
