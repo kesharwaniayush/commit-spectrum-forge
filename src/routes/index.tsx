@@ -428,32 +428,44 @@ function Portfolio() {
             </p>
             <div className="mt-8 rounded-2xl border border-border bg-card p-6 shadow-sm">
               <p className="eyebrow">Education</p>
-              <h3 className="mt-3 text-lg font-semibold">
-                Modern Education Society&apos;s Wadia College of Engineering
-              </h3>
-              <p className="mt-1 text-sm text-muted-foreground">Pune, Maharashtra</p>
-              <p className="mt-3 text-sm">
-                B.E. Computer Engineering · SGPA{" "}
-                <span className="font-semibold text-primary">9.29/10</span>
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">Aug 2023 – Jul 2027</p>
 
-              <div className="mt-6 border-t border-border pt-5">
-                <h3 className="text-base font-semibold">
-                  Lord Jiveshwar English Medium School &amp; Junior College
-                </h3>
-                <p className="mt-1 text-sm text-muted-foreground">Ichalkaranji, Maharashtra</p>
-                <p className="mt-2 text-sm">H.S.C. — Intermediate (12th Class)</p>
-                <p className="mt-1 text-xs text-muted-foreground">2021 – 2023</p>
+              <div className="mt-4 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                <div>
+                  <h3 className="text-base font-semibold leading-snug">
+                    Modern Education Society's Wadia College of Engineering
+                  </h3>
+                  <p className="mt-1 text-sm">
+                    B.E. Computer Engineering · SGPA{" "}
+                    <span className="font-semibold text-primary">9.29/10</span>
+                  </p>
+                </div>
+                <p className="text-xs text-muted-foreground sm:text-right sm:whitespace-nowrap">
+                  Pune, Maharashtra · Aug 2023 – Jul 2027
+                </p>
               </div>
 
-              <div className="mt-6 border-t border-border pt-5">
-                <h3 className="text-base font-semibold">
-                  Vyankatrao High School &amp; Junior College
-                </h3>
-                <p className="mt-1 text-sm text-muted-foreground">Ichalkaranji, Maharashtra</p>
-                <p className="mt-2 text-sm">S.S.C. — 10th Class</p>
-                <p className="mt-1 text-xs text-muted-foreground">2020</p>
+              <div className="mt-4 border-t border-border pt-4 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                <div>
+                  <h3 className="text-base font-semibold leading-snug">
+                    Lord Jiveshwar English Medium School & Junior College
+                  </h3>
+                  <p className="mt-1 text-sm">H.S.C. — Intermediate (12th Class)</p>
+                </div>
+                <p className="text-xs text-muted-foreground sm:text-right sm:whitespace-nowrap">
+                  Ichalkaranji, Maharashtra · 2021 – 2023
+                </p>
+              </div>
+
+              <div className="mt-4 border-t border-border pt-4 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                <div>
+                  <h3 className="text-base font-semibold leading-snug">
+                    Vyankatrao High School & Junior College
+                  </h3>
+                  <p className="mt-1 text-sm">S.S.C. — 10th Class</p>
+                </div>
+                <p className="text-xs text-muted-foreground sm:text-right sm:whitespace-nowrap">
+                  Ichalkaranji, Maharashtra · 2020
+                </p>
               </div>
             </div>
 
