@@ -432,7 +432,7 @@ function Portfolio() {
               <div className="mt-4 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
                 <div>
                   <h3 className="text-base font-semibold leading-snug">
-                    Modern Education Society's Wadia College of Engineering
+                    Modern Education Society&apos;s Wadia College of Engineering
                   </h3>
                   <p className="mt-1 text-sm">
                     B.E. Computer Engineering · SGPA{" "}
@@ -447,7 +447,7 @@ function Portfolio() {
               <div className="mt-4 border-t border-border pt-4 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
                 <div>
                   <h3 className="text-base font-semibold leading-snug">
-                    Lord Jiveshwar English Medium School & Junior College
+                    Lord Jiveshwar English Medium School &amp; Junior College
                   </h3>
                   <p className="mt-1 text-sm">H.S.C. — Intermediate (12th Class)</p>
                 </div>
@@ -459,7 +459,7 @@ function Portfolio() {
               <div className="mt-4 border-t border-border pt-4 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
                 <div>
                   <h3 className="text-base font-semibold leading-snug">
-                    Vyankatrao High School & Junior College
+                    Vyankatrao High School &amp; Junior College
                   </h3>
                   <p className="mt-1 text-sm">S.S.C. — 10th Class</p>
                 </div>
