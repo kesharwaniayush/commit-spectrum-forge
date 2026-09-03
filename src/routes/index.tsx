@@ -240,8 +240,8 @@ function Portfolio() {
     <div className="min-h-screen bg-transparent text-foreground">
       {/* NAV */}
       <header className="fixed inset-x-0 top-4 z-50 px-4">
-        <nav className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 rounded-full bg-ink px-4 text-ink-foreground shadow-lg sm:px-6">
-          <a href="#top" className="flex items-center gap-2">
+        <nav className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 rounded-full border border-border bg-ink/90 px-3 text-ink-foreground shadow-lg backdrop-blur sm:px-4">
+          <a href="#top" className="flex items-center gap-2 pl-1">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
               A
             </span>
@@ -253,9 +253,7 @@ function Portfolio() {
                 <a
                   href={`#${n.id}`}
                   className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
-                    active === n.id
-                      ? "text-primary"
-                      : "text-ink-muted hover:text-ink-foreground"
+                    active === n.id ? "text-primary" : "text-ink-muted hover:text-ink-foreground"
                   }`}
                 >
                   {n.label}
@@ -263,156 +261,193 @@ function Portfolio() {
               </li>
             ))}
           </ul>
+          <a
+            href={LINKS.email}
+            className="rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 sm:text-sm"
+          >
+            Hire Me
+          </a>
         </nav>
       </header>
 
-      {/* HERO */}
-      <section id="top" className="relative overflow-hidden pt-28 sm:pt-32">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="grid items-center gap-12 pb-20 md:grid-cols-[1.05fr_0.95fr]">
-            {/* left copy */}
-            <div className="rise order-2 md:order-1">
-              <span className="inline-block rounded-full border border-border bg-card px-4 py-1.5 text-sm font-medium text-muted-foreground">
-                Hello!
-              </span>
-              <h1 className="mt-5 text-[clamp(2.1rem,5.4vw,3.9rem)] font-extrabold leading-[1.06]">
-                I&apos;m <span className="text-primary">Ayush Kesharwani</span>
-                <br />
-                <span key={role} className="rise inline-block">
-                  {role}
+      {/* HERO — floating white panel */}
+      <section id="top" className="relative pt-24 sm:pt-28">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="panel rise overflow-hidden px-6 pb-0 pt-10 sm:px-10 sm:pt-14 lg:px-14">
+            <div className="grid items-end gap-10 md:grid-cols-[1.1fr_0.9fr]">
+              {/* left copy */}
+              <div className="pb-10 sm:pb-14 lg:pb-20">
+                <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  Hello! Welcome to my portfolio
                 </span>
-                <span className="ml-1 inline-block animate-pulse text-primary">|</span>
-              </h1>
+                <h1 className="mt-5 text-[clamp(2.1rem,5vw,3.6rem)] font-bold leading-[1.08]">
+                  I&apos;m <span className="text-primary drop-shadow-[0_1px_0_oklch(0_0_0/0.25)]">Ayush Kesharwani</span>
+                  <br />
+                  <span key={role} className="rise inline-block">
+                    {role}
+                  </span>
+                  <span className="ml-1 inline-block animate-pulse text-primary">.</span>
+                </h1>
 
-              <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-                Full-stack &amp; AI/ML engineer — REST-first back-ends, cloud deployment and
-                production LLM applications.
-              </p>
+                <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
+                  Full-stack &amp; AI/ML engineer — REST-first back-ends, cloud deployment and
+                  production LLM applications built to ship.
+                </p>
 
-              <div className="mt-7 flex items-center gap-10">
-                <div>
-                  <p className="font-display text-3xl font-bold">8+</p>
-                  <p className="text-sm text-muted-foreground">Full-stack features shipped</p>
-                </div>
-                <div className="h-10 w-px bg-border" />
-                <div>
-                  <p className="font-display text-3xl font-bold">4</p>
-                  <p className="text-sm text-muted-foreground">Shipped AI products</p>
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  <a
+                    href={resume.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-transform hover:-translate-y-0.5"
+                  >
+                    Résumé ↗
+                  </a>
+                  <a
+                    href="#projects"
+                    className="rounded-full border border-foreground/20 px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-foreground hover:text-panel"
+                  >
+                    See My Work
+                  </a>
                 </div>
               </div>
 
-              <div className="mt-9 flex flex-wrap items-center gap-3">
-                <a
-                  href={resume.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-transform hover:-translate-y-0.5"
+              {/* photo right */}
+              <div className="relative mx-auto flex w-[min(78vw,380px)] items-end justify-center md:w-full">
+                <div className="absolute bottom-0 left-1/2 aspect-square w-[92%] -translate-x-1/2 rounded-t-full bg-ink" aria-hidden="true" />
+                <div className="wave-stripes absolute bottom-0 left-1/2 h-16 w-[92%] -translate-x-1/2" aria-hidden="true" />
+                <span
+                  className="absolute right-[6%] top-[4%] text-3xl text-primary md:text-4xl"
+                  aria-hidden="true"
                 >
-                  Résumé ↗
-                </a>
-                <a
-                  href={LINKS.email}
-                  className="rounded-full bg-card px-6 py-3 text-sm font-semibold text-foreground shadow-md ring-1 ring-border transition-transform hover:-translate-y-0.5"
-                >
-                  Hire Me
-                </a>
-              </div>
-            </div>
-
-            {/* photo right */}
-            <div className="order-1 md:order-2">
-              <div className="relative mx-auto w-[min(78vw,400px)]">
-                <div className="blob absolute -inset-x-6 bottom-6 top-20" aria-hidden="true" />
+                  ✦
+                </span>
                 <img
                   src={photo.url}
                   alt="Portrait of Ayush Kesharwani"
-                  className="relative z-10 w-full rounded-3xl object-cover shadow-xl"
+                  className="relative z-10 w-[86%] object-cover object-top [mask-image:linear-gradient(to_bottom,black_88%,transparent)]"
                 />
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-
-      {/* SKILLS — dark band */}
-      <section id="skills" className="scroll-mt-24 rounded-t-[2rem] bg-ink text-ink-foreground">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <h2 className="text-[clamp(1.9rem,4vw,2.75rem)] font-bold">
-                My <span className="text-primary">Skills</span>
-              </h2>
-              <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-muted">
-                A practical stack spanning product front-ends, scalable back-end services and
-                applied machine learning.
-              </p>
-            </div>
-            <div className="inline-flex rounded-full border border-ink-foreground/20 p-1">
-              {(["grid", "sphere"] as const).map((v) => (
-                <button
-                  key={v}
-                  type="button"
-                  onClick={() => setSkillView(v)}
-                  aria-pressed={skillView === v}
-                  className={`rounded-full px-4 py-1.5 text-sm font-semibold capitalize transition-colors ${
-                    skillView === v
-                      ? "bg-primary text-primary-foreground"
-                      : "text-ink-muted hover:text-ink-foreground"
-                  }`}
-                >
-                  {v} view
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
-
-          {skillView === "grid" ? (
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {SKILLS.map((s) => (
-                <div
-                  key={s.title}
-                  className="group rounded-2xl bg-ink-foreground/[0.06] p-5 transition-colors hover:bg-primary"
-                >
-                  <h3 className="text-base font-semibold">{s.title}</h3>
-                  <ul className="mt-4 flex flex-wrap gap-1.5">
-                    {s.items.map((i) => (
-                      <li
-                        key={i}
-                        className="rounded-full bg-ink-foreground/10 px-2.5 py-1 text-[0.72rem] text-ink-muted transition-colors group-hover:bg-ink-foreground/20 group-hover:text-ink-foreground"
-                      >
-                        {i}
-                      </li>
-                    ))}
-                  </ul>
+          {/* STATS band */}
+          <div className="mt-6 rounded-[1.75rem] border border-border bg-ink/80 px-6 py-7 backdrop-blur sm:px-10">
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+              {[
+                { n: "9", suffix: "+", label: "Projects Shipped" },
+                { n: "8", suffix: "+", label: "Full-stack Features" },
+                { n: "4", suffix: "", label: "AI / LLM Products" },
+                { n: "2", suffix: "×", label: "Hackathon Winner" },
+              ].map((s) => (
+                <div key={s.label} className="text-center md:text-left">
+                  <p className="font-display text-3xl font-bold sm:text-4xl">
+                    {s.n}
+                    <span className="text-primary">{s.suffix}</span>
+                  </p>
+                  <p className="mt-1 text-xs uppercase tracking-wider text-ink-muted">{s.label}</p>
                 </div>
               ))}
             </div>
-          ) : (
-            <div className="mt-10">
-              <SkillSphere items={ALL_SKILLS} />
-              <p className="mt-4 text-center text-xs text-ink-muted">Drag to spin the sphere</p>
-            </div>
-          )}
+          </div>
         </div>
       </section>
 
+      {/* SKILLS — white panel with colored tiles */}
+      <section id="skills" className="scroll-mt-24 pt-16 sm:pt-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="panel px-6 py-10 sm:px-10 sm:py-14 lg:px-14">
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="eyebrow">What I work with</p>
+                <h2 className="mt-3 text-[clamp(1.9rem,4vw,2.6rem)] font-bold">
+                  My Comprehensive <br className="hidden sm:block" />
+                  Skill Set
+                </h2>
+              </div>
+              <div className="flex flex-col items-start gap-4 sm:items-end">
+                <p className="max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-right">
+                  A practical stack spanning product front-ends, scalable back-end services and
+                  applied machine learning.
+                </p>
+                <div className="inline-flex rounded-full border border-border p-1">
+                  {(["grid", "sphere"] as const).map((v) => (
+                    <button
+                      key={v}
+                      type="button"
+                      onClick={() => setSkillView(v)}
+                      aria-pressed={skillView === v}
+                      className={`rounded-full px-4 py-1.5 text-sm font-semibold capitalize transition-colors ${
+                        skillView === v
+                          ? "bg-ink text-ink-foreground"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      {v} view
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
 
-      {/* ABOUT */}
+            {skillView === "grid" ? (
+              <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {SKILLS.map((s, i) => {
+                  const tone = i % 4 === 1 ? "yellow" : i % 4 === 2 ? "dark" : "light";
+                  const wrap =
+                    tone === "yellow"
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : tone === "dark"
+                        ? "bg-ink text-ink-foreground border-ink"
+                        : "bg-card text-foreground border-border";
+                  const chip =
+                    tone === "yellow"
+                      ? "bg-primary-foreground/10 text-primary-foreground"
+                      : tone === "dark"
+                        ? "bg-ink-foreground/10 text-ink-muted"
+                        : "bg-secondary text-muted-foreground";
+                  return (
+                    <div
+                      key={s.title}
+                      className={`rounded-2xl border p-5 transition-transform hover:-translate-y-1 ${wrap}`}
+                    >
+                      <h3 className="inline-block text-base font-semibold">{s.title}</h3>
+                      <ul className="mt-4 flex flex-wrap gap-1.5">
+                        {s.items.map((it) => (
+                          <li key={it} className={`rounded-full px-2.5 py-1 text-[0.72rem] font-medium ${chip}`}>
+                            {it}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="mt-10 rounded-[1.75rem] bg-ink py-6 text-ink-foreground">
+                <SkillSphere items={ALL_SKILLS} />
+                <p className="mt-2 text-center text-xs text-ink-muted">Drag to spin the sphere</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT — dark section */}
       <Section id="about" label="About" title="About Me">
         <div className="grid gap-10 md:grid-cols-[280px_1fr] md:gap-14">
           <div className="relative">
-            <div className="absolute -left-3 -top-3 h-full w-full rounded-2xl bg-primary/15" aria-hidden="true" />
+            <div className="absolute -left-3 -top-3 h-full w-full rounded-2xl bg-primary" aria-hidden="true" />
             <img
               src={photo.url}
-              alt="Ayush Kesharwani working"
+              alt="Ayush Kesharwani"
               loading="lazy"
               className="relative w-full rounded-2xl bg-secondary object-cover"
             />
           </div>
           <div>
-            <p className="text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed text-muted-foreground">
               I'm Ayush Kesharwani, a final-year Computer Engineering student and software
               engineer focused on building production-ready products. I work across React
               frontends, REST APIs, scalable backends, AI/ML integration, and cloud deployment. My
@@ -420,7 +455,7 @@ function Portfolio() {
               ranking engine. With strong foundations in DSA, OOP, and system design, I'm
               experienced in Agile workflows, debugging, and writing clean, maintainable code.
             </p>
-            <div className="mt-8 rounded-2xl border border-border bg-card p-6 shadow-sm">
+            <div className="panel mt-8 !rounded-2xl p-6">
               <p className="eyebrow">Education</p>
 
               <div className="mt-4 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
@@ -430,7 +465,7 @@ function Portfolio() {
                   </h3>
                   <p className="mt-1 text-sm">
                     B.E. Computer Engineering · SGPA{" "}
-                    <span className="font-semibold text-primary">9.29/10</span>
+                    <span className="rounded-md bg-primary px-1.5 py-0.5 font-semibold text-primary-foreground">9.29/10</span>
                   </p>
                 </div>
                 <p className="text-xs text-muted-foreground sm:text-right sm:whitespace-nowrap">
@@ -462,17 +497,16 @@ function Portfolio() {
                 </p>
               </div>
             </div>
-
           </div>
         </div>
       </Section>
 
       {/* EXPERIENCE */}
       <Section id="experience" label="Experience" title="Where I've Worked">
-        <div className="rounded-2xl border border-border bg-card p-7 shadow-sm sm:p-9">
+        <div className="rounded-[1.75rem] border border-border bg-card p-7 sm:p-9">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
             <h3 className="text-xl font-semibold">Web Developer Intern — Remote</h3>
-            <p className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+            <p className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
               Feb 2026 – Apr 2026
             </p>
           </div>
@@ -495,76 +529,80 @@ function Portfolio() {
         </div>
       </Section>
 
-      {/* PROJECTS */}
-      <Section id="projects" label="Portfolio" title="Selected Projects">
+      {/* PROJECTS — "Our works" style dark cards */}
+      <Section id="projects" label="Our Works" title="Selected Projects">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((p) => (
             <article
               key={p.name}
-              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-lg"
+              className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-border bg-card transition-colors hover:border-primary/60"
             >
-              <img
-                src={p.image}
-                alt={`${p.name} interface preview`}
-                loading="lazy"
-                width={1200}
-                height={752}
-                className="aspect-[16/10] w-full border-b border-border object-cover"
-              />
+              <div className="p-3 pb-0">
+                <img
+                  src={p.image}
+                  alt={`${p.name} interface preview`}
+                  loading="lazy"
+                  width={1200}
+                  height={752}
+                  className="aspect-[16/10] w-full rounded-2xl border border-border object-cover"
+                />
+              </div>
               <div className="flex flex-1 flex-col p-6">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-semibold text-primary">{p.no}</span>
-                {p.live ? (
+                <div className="flex items-center justify-between">
+                  <span className="rounded-full bg-primary/15 px-2.5 py-1 text-xs font-bold text-primary">
+                    {p.no}
+                  </span>
+                  {p.live ? (
+                    <a
+                      href={p.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Open ${p.name}`}
+                      className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:-translate-y-0.5"
+                    >
+                      ↗
+                    </a>
+                  ) : null}
+                </div>
+                <h3 className="mt-3 text-xl font-bold">{p.name}</h3>
+                <ul className="mt-3 flex flex-wrap gap-1.5">
+                  {p.stack.map((s) => (
+                    <li
+                      key={s}
+                      className="rounded-full bg-secondary px-2.5 py-1 text-[0.7rem] font-medium text-muted-foreground"
+                    >
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+                <ul className="mt-4 flex-1 space-y-2.5">
+                  {p.bullets.map((b) => (
+                    <li key={b} className="flex gap-2.5 text-[0.82rem] leading-relaxed text-muted-foreground">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-5 flex gap-3 text-sm font-semibold">
+                  {p.live ? (
+                    <a
+                      href={p.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-full bg-primary px-4 py-2 text-xs text-primary-foreground transition-opacity hover:opacity-90"
+                    >
+                      Live site
+                    </a>
+                  ) : null}
                   <a
-                    href={p.live}
+                    href={LINKS.github}
                     target="_blank"
                     rel="noreferrer"
-                    aria-label={`Open ${p.name}`}
-                    className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform hover:-translate-y-0.5"
+                    className="rounded-full border border-border px-4 py-2 text-xs text-muted-foreground transition-colors hover:border-primary hover:text-primary"
                   >
-                    ↗
+                    Source
                   </a>
-                ) : null}
-              </div>
-              <h3 className="mt-3 text-xl font-bold">{p.name}</h3>
-              <ul className="mt-3 flex flex-wrap gap-1.5">
-                {p.stack.map((s) => (
-                  <li
-                    key={s}
-                    className="rounded-full bg-secondary px-2.5 py-1 text-[0.7rem] font-medium text-muted-foreground"
-                  >
-                    {s}
-                  </li>
-                ))}
-              </ul>
-              <ul className="mt-4 flex-1 space-y-2.5">
-                {p.bullets.map((b) => (
-                  <li key={b} className="flex gap-2.5 text-[0.82rem] leading-relaxed text-muted-foreground">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-5 flex gap-4 text-sm font-medium">
-                {p.live ? (
-                  <a
-                    href={p.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-primary underline-offset-4 hover:underline"
-                  >
-                    Live site
-                  </a>
-                ) : null}
-                <a
-                  href={LINKS.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-                >
-                  Source
-                </a>
-              </div>
+                </div>
               </div>
             </article>
           ))}
@@ -574,33 +612,31 @@ function Portfolio() {
       {/* LEADERSHIP */}
       <Section id="leadership" label="Recognition" title="Leadership & Achievements">
         <div className="grid gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-card p-7 shadow-sm">
+          <div className="rounded-[1.5rem] bg-primary p-7 text-primary-foreground">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h3 className="text-xl font-semibold">Technical Head</h3>
-              <p className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+              <p className="rounded-full bg-primary-foreground px-3 py-1 text-xs font-semibold text-primary">
                 2024 – 2025
               </p>
             </div>
-            <p className="mt-1 text-sm text-muted-foreground">
-              MESWCOE E-Cell — Entrepreneurship Cell, Pune
-            </p>
-            <p className="mt-5 leading-relaxed text-muted-foreground">
+            <p className="mt-1 text-sm opacity-80">MESWCOE E-Cell — Entrepreneurship Cell, Pune</p>
+            <p className="mt-5 leading-relaxed opacity-90">
               Led technical initiatives by driving sprint planning, peer code reviews and end-to-end
               project execution, delivering scalable, production-ready solutions for club events.
             </p>
           </div>
-          <div className="rounded-2xl border border-border bg-card p-7 shadow-sm">
+          <div className="panel !rounded-[1.5rem] p-7">
             <p className="eyebrow">Achievements</p>
             <ul className="mt-5 space-y-4">
               <li>
-                <span className="text-sm font-semibold text-primary">Winner</span>
-                <p className="mt-1 leading-relaxed text-muted-foreground">
+                <span className="rounded-md bg-primary px-2 py-0.5 text-xs font-bold text-primary-foreground">Winner</span>
+                <p className="mt-2 leading-relaxed text-muted-foreground">
                   Hacktoberfest (DigitalOcean, India) and RoboCon (CRIF India) — 2025 &amp; 2024
                 </p>
               </li>
               <li>
-                <span className="text-sm font-semibold text-primary">Finalist</span>
-                <p className="mt-1 leading-relaxed text-muted-foreground">
+                <span className="rounded-md bg-ink px-2 py-0.5 text-xs font-bold text-ink-foreground">Finalist</span>
+                <p className="mt-2 leading-relaxed text-muted-foreground">
                   MumbaiHacks and ByteVerse 7.0 (NIT Patna) — 2025
                 </p>
               </li>
@@ -609,55 +645,58 @@ function Portfolio() {
         </div>
       </Section>
 
-      {/* CONTACT */}
-      <section
-        id="contact"
-        className="scroll-mt-24 rounded-t-[2rem] bg-ink text-ink-foreground"
-      >
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-          <p className="eyebrow text-primary">Contact</p>
-          <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-14">
-            <div>
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
-                <a href={LINKS.email} className="group block">
-                  <span className="eyebrow block text-ink-muted">Email</span>
-                  <span className="mt-1 block text-lg group-hover:text-primary">
-                    ayush.kesharwani.work@gmail.com
-                  </span>
-                </a>
-                <a href={LINKS.phone} className="group block">
-                  <span className="eyebrow block text-ink-muted">Phone</span>
-                  <span className="mt-1 block text-lg group-hover:text-primary">
-                    +91-9588430618
-                  </span>
-                </a>
-              </div>
-              <div className="mt-10 flex flex-wrap gap-3">
-                {[
-                  { href: LINKS.github, label: "GitHub" },
-                  { href: LINKS.linkedin, label: "LinkedIn" },
-                  { href: LINKS.leetcode, label: "LeetCode" },
-                  { href: resume.url, label: "Résumé" },
-                ].map((l) => (
-                  <a
-                    key={l.label}
-                    href={l.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full border border-ink-foreground/20 px-5 py-2.5 text-sm font-medium text-ink-muted transition-colors hover:border-primary hover:text-primary"
-                  >
-                    {l.label} ↗
+      {/* CONTACT — white panel */}
+      <section id="contact" className="scroll-mt-24 pb-16 sm:pb-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="panel overflow-hidden px-6 py-10 sm:px-10 sm:py-14 lg:px-14">
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+              <div>
+                <p className="eyebrow">Contact</p>
+                <h2 className="mt-3 text-[clamp(1.9rem,4vw,2.6rem)] font-bold">
+                  Let&apos;s Build <br className="hidden sm:block" />
+                  Something Great
+                </h2>
+                <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
+                  <a href={LINKS.email} className="group block">
+                    <span className="eyebrow block">Email</span>
+                    <span className="mt-1 block text-base font-medium group-hover:underline">
+                      ayush.kesharwani.work@gmail.com
+                    </span>
                   </a>
-                ))}
+                  <a href={LINKS.phone} className="group block">
+                    <span className="eyebrow block">Phone</span>
+                    <span className="mt-1 block text-base font-medium group-hover:underline">
+                      +91-9588430618
+                    </span>
+                  </a>
+                </div>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {[
+                    { href: LINKS.github, label: "GitHub" },
+                    { href: LINKS.linkedin, label: "LinkedIn" },
+                    { href: LINKS.leetcode, label: "LeetCode" },
+                    { href: resume.url, label: "Résumé" },
+                  ].map((l) => (
+                    <a
+                      key={l.label}
+                      href={l.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-ink-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+                    >
+                      {l.label} ↗
+                    </a>
+                  ))}
+                </div>
               </div>
+              <ContactForm />
             </div>
-            <ContactForm />
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-ink-foreground/10 bg-ink text-ink-foreground">
+      <footer className="border-t border-border bg-ink text-ink-foreground">
         <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             <div>
@@ -723,7 +762,7 @@ function Portfolio() {
               </ul>
             </div>
           </div>
-          <div className="mt-12 flex flex-col gap-2 border-t border-ink-foreground/10 pt-6 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-12 flex flex-col gap-2 border-t border-border pt-6 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
             <p>© {new Date().getFullYear()} Ayush Kesharwani. All rights reserved.</p>
             <p>Built with React, TanStack Start &amp; Tailwind CSS.</p>
           </div>
@@ -746,10 +785,9 @@ function Section({
 }) {
   return (
     <section id={id} className="scroll-mt-24">
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
         <p className="eyebrow text-primary">{label}</p>
-        <h2 className="mt-3 text-[clamp(1.9rem,4vw,2.75rem)] font-bold">{title}</h2>
-        <div className="mt-4 mb-10 h-1 w-16 rounded-full bg-primary" />
+        <h2 className="mt-3 mb-10 text-[clamp(1.9rem,4vw,2.6rem)] font-bold">{title}</h2>
         {children}
       </div>
     </section>

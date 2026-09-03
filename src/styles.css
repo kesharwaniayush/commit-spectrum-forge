@@ -5,17 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Design system — "Nexis" inspired: near-black canvas, floating white panels,
+ * warm yellow accent. All colors in oklch.
  */
 
 @theme inline {
@@ -26,6 +17,9 @@
   --color-ink: var(--ink);
   --color-ink-foreground: var(--ink-foreground);
   --color-ink-muted: var(--ink-muted);
+  --color-panel: var(--panel);
+  --color-panel-foreground: var(--panel-foreground);
+  --color-panel-muted: var(--panel-muted);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -70,43 +64,46 @@
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: oklch(0.155 0.012 155);
-  --foreground: oklch(0.96 0.005 120);
-  --card: oklch(0.205 0.015 155);
-  --card-foreground: oklch(0.96 0.005 120);
-  --popover: oklch(0.205 0.01 155);
-  --popover-foreground: oklch(0.96 0.005 120);
-  --primary: oklch(0.74 0.17 160);
-  --primary-foreground: oklch(0.15 0.02 160);
-  --secondary: oklch(0.25 0.012 155);
-  --secondary-foreground: oklch(0.96 0.005 120);
-  --muted: oklch(0.25 0.012 155);
-  --muted-foreground: oklch(0.72 0.015 140);
-  --accent: oklch(0.74 0.17 160);
-  --accent-foreground: oklch(0.15 0.02 160);
+  --radius: 0.85rem;
+  --background: oklch(0.13 0 0);
+  --foreground: oklch(0.97 0.002 90);
+  --card: oklch(0.19 0.002 90);
+  --card-foreground: oklch(0.97 0.002 90);
+  --popover: oklch(0.19 0.002 90);
+  --popover-foreground: oklch(0.97 0.002 90);
+  --primary: oklch(0.88 0.175 95);
+  --primary-foreground: oklch(0.15 0.01 90);
+  --secondary: oklch(0.25 0.002 90);
+  --secondary-foreground: oklch(0.97 0.002 90);
+  --muted: oklch(0.25 0.002 90);
+  --muted-foreground: oklch(0.7 0.004 90);
+  --accent: oklch(0.88 0.175 95);
+  --accent-foreground: oklch(0.15 0.01 90);
   --destructive: oklch(0.66 0.2 27);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.74 0.17 160);
-  --surface-alt: oklch(0.205 0.01 155);
-  --ink: oklch(0.14 0.015 160);
-  --ink-foreground: oklch(0.96 0.005 120);
-  --ink-muted: oklch(0.72 0.015 140);
-  --chart-1: oklch(0.74 0.17 160);
-  --chart-2: oklch(0.96 0.005 120);
-  --chart-3: oklch(0.72 0.015 140);
-  --chart-4: oklch(0.25 0.012 155);
-  --chart-5: oklch(0.205 0.01 155);
-  --sidebar: oklch(0.205 0.01 155);
-  --sidebar-foreground: oklch(0.96 0.005 120);
-  --sidebar-primary: oklch(0.74 0.17 160);
-  --sidebar-primary-foreground: oklch(0.15 0.02 160);
-  --sidebar-accent: oklch(0.25 0.012 155);
-  --sidebar-accent-foreground: oklch(0.96 0.005 120);
-  --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.74 0.17 160);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.88 0.175 95);
+  --surface-alt: oklch(0.17 0.002 90);
+  --ink: oklch(0.11 0 0);
+  --ink-foreground: oklch(0.97 0.002 90);
+  --ink-muted: oklch(0.7 0.004 90);
+  --panel: oklch(0.99 0.003 90);
+  --panel-foreground: oklch(0.16 0.005 90);
+  --panel-muted: oklch(0.48 0.008 90);
+  --chart-1: oklch(0.88 0.175 95);
+  --chart-2: oklch(0.97 0.002 90);
+  --chart-3: oklch(0.7 0.004 90);
+  --chart-4: oklch(0.25 0.002 90);
+  --chart-5: oklch(0.19 0.002 90);
+  --sidebar: oklch(0.19 0.002 90);
+  --sidebar-foreground: oklch(0.97 0.002 90);
+  --sidebar-primary: oklch(0.88 0.175 95);
+  --sidebar-primary-foreground: oklch(0.15 0.01 90);
+  --sidebar-accent: oklch(0.25 0.002 90);
+  --sidebar-accent-foreground: oklch(0.97 0.002 90);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.88 0.175 95);
 }
 
 @layer base {
@@ -115,7 +112,7 @@
   }
 
   html {
-    background-color: #100e0b;
+    background-color: #0a0a0a;
   }
 
   body {
@@ -148,27 +145,39 @@
   }
 }
 
+/* Floating white panel — remaps semantic tokens to dark-on-light inside. */
+@utility panel {
+  --color-foreground: var(--panel-foreground);
+  --color-muted-foreground: var(--panel-muted);
+  --color-border: oklch(0 0 0 / 10%);
+  --color-input: oklch(0 0 0 / 14%);
+  --color-card: oklch(0.965 0.004 90);
+  --color-card-foreground: var(--panel-foreground);
+  --color-secondary: oklch(0.94 0.004 90);
+  --color-secondary-foreground: var(--panel-foreground);
+  background: var(--panel);
+  color: var(--panel-foreground);
+  border-radius: 2rem;
+  box-shadow: 0 30px 80px -30px oklch(0 0 0 / 70%);
+}
+
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--muted-foreground);
+  color: var(--color-muted-foreground);
 }
 
-@utility blob {
-  border-radius: 999px 999px 28px 28px;
-  background: var(--primary);
-}
-
-
-@utility grid-fade {
-  background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse at 50% 0%, black, transparent 75%);
+/* Yellow wave stripes under the portrait */
+@utility wave-stripes {
+  background: repeating-linear-gradient(
+    180deg,
+    var(--primary) 0 5px,
+    transparent 5px 12px
+  );
+  mask-image: radial-gradient(ellipse 80% 100% at 50% 100%, black 60%, transparent 100%);
 }
 
 @keyframes rise {
@@ -188,14 +197,13 @@
   html { scroll-behavior: auto; }
 }
 
-/* ===== Blueprint aura background (background layer only) ===== */
+/* ===== Warm studio glow background ===== */
 .aura-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
-  /* NO background-color — layers blend against the html base below */
 }
 
 .aura-layer {
@@ -206,41 +214,19 @@
   will-change: transform;
 }
 
-/* Layer 1 — coarse blueprint grid */
 .aura-layer-1 {
-  background:
-    linear-gradient(rgba(52, 211, 153, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(52, 211, 153, 0.12) 1px, transparent 1px);
-  background-size: 50px 50px;
-  mix-blend-mode: normal;
+  background: radial-gradient(ellipse 60% 45% at 50% -5%, oklch(0.88 0.175 95 / 0.28) 0%, transparent 70%);
 }
 
-/* Layer 2 — fine blueprint grid */
 .aura-layer-2 {
-  background:
-    linear-gradient(rgba(52, 211, 153, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(52, 211, 153, 0.06) 1px, transparent 1px);
-  background-size: 10px 10px;
-  mix-blend-mode: normal;
+  background: radial-gradient(circle at 85% 30%, oklch(0.75 0.12 80 / 0.14) 0%, transparent 40%);
+  filter: blur(80px);
 }
 
-/* Layer 3 — atmospheric cyan bloom */
 .aura-layer-3 {
-  background: radial-gradient(circle at 60% 40%, rgba(16, 185, 129, 0.32) 0%, transparent 45%);
-  mix-blend-mode: screen;
-  filter: blur(175px);
+  background:
+    linear-gradient(oklch(1 0 0 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(1 0 0 / 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black, transparent 70%);
 }
-
-@media (min-width: 768px) {
-  .aura-layer-3 {
-    filter: blur(252px);
-  }
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  .aura-layer-3 {
-    filter: blur(175px);
-  }
-}
-

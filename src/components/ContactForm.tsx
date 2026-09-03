@@ -36,15 +36,12 @@ export function ContactForm() {
   };
 
   const field =
-    "mt-1.5 w-full rounded-xl border border-ink-foreground/15 bg-ink-foreground/[0.06] px-4 py-3 text-sm text-ink-foreground placeholder:text-ink-muted/70 focus:border-primary focus:outline-none";
+    "mt-1.5 w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:outline-none";
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="rounded-2xl border border-ink-foreground/10 bg-ink-foreground/[0.04] p-6 sm:p-7"
-    >
+    <form onSubmit={onSubmit} className="rounded-2xl border border-border bg-card/60 p-6 sm:p-7">
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block text-sm font-medium text-ink-muted">
+        <label className="block text-sm font-medium text-muted-foreground">
           Name
           <input
             required
@@ -55,7 +52,7 @@ export function ContactForm() {
             className={field}
           />
         </label>
-        <label className="block text-sm font-medium text-ink-muted">
+        <label className="block text-sm font-medium text-muted-foreground">
           Email
           <input
             required
@@ -68,7 +65,7 @@ export function ContactForm() {
           />
         </label>
       </div>
-      <label className="mt-4 block text-sm font-medium text-ink-muted">
+      <label className="mt-4 block text-sm font-medium text-muted-foreground">
         Phone
         <input
           maxLength={30}
@@ -78,7 +75,7 @@ export function ContactForm() {
           className={field}
         />
       </label>
-      <label className="mt-4 block text-sm font-medium text-ink-muted">
+      <label className="mt-4 block text-sm font-medium text-muted-foreground">
         Message
         <textarea
           required
@@ -93,12 +90,12 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-5 w-full rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
+        className="mt-5 w-full rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
       >
         {status === "sending" ? "Sending…" : "Send Message"}
       </button>
       {status === "sent" && (
-        <p className="mt-3 text-sm text-primary">Thanks! Your message is on its way.</p>
+        <p className="mt-3 text-sm font-medium text-foreground">Thanks! Your message is on its way.</p>
       )}
       {status === "error" && (
         <p className="mt-3 text-sm text-destructive">
