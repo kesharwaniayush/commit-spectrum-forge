@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import photo from "@/assets/photo.asset.json";
 import resume from "@/assets/resume.asset.json";
-import { ThemeToggle } from "@/components/ThemeToggle";
+
 import { ContactForm } from "@/components/ContactForm";
 import { SkillSphere } from "@/components/SkillSphere";
 import devrankImg from "@/assets/devrank.jpg.asset.json";
@@ -263,9 +263,6 @@ function Portfolio() {
               </li>
             ))}
           </ul>
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-          </div>
         </nav>
       </header>
 
