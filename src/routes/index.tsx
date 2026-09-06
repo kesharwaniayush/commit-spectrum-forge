@@ -306,7 +306,7 @@ function Portfolio() {
                   </a>
                   <a
                     href="#projects"
-                    className="rounded-full border border-foreground/20 px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-foreground hover:text-panel"
+                    className="rounded-full border border-panel-foreground/25 px-6 py-3 text-sm font-semibold text-panel-foreground transition-colors hover:bg-panel-foreground hover:text-panel"
                   >
                     See My Work
                   </a>
