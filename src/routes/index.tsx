@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import photo from "@/assets/photo.asset.json";
 import resume from "@/assets/resume.asset.json";
 
+import { Github, Linkedin, Code2, FileText } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { SkillSphere } from "@/components/SkillSphere";
 import devrankImg from "@/assets/devrank.jpg.asset.json";
