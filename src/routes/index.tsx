@@ -673,19 +673,21 @@ function Portfolio() {
                 </div>
                 <div className="mt-8 flex flex-wrap gap-3">
                   {[
-                    { href: LINKS.github, label: "GitHub" },
-                    { href: LINKS.linkedin, label: "LinkedIn" },
-                    { href: LINKS.leetcode, label: "LeetCode" },
-                    { href: resume.url, label: "Résumé" },
+                    { href: LINKS.github, label: "GitHub", Icon: Github },
+                    { href: LINKS.linkedin, label: "LinkedIn", Icon: Linkedin },
+                    { href: LINKS.leetcode, label: "LeetCode", Icon: Code2 },
+                    { href: resume.url, label: "Résumé", Icon: FileText },
                   ].map((l) => (
                     <a
                       key={l.label}
                       href={l.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-ink-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+                      aria-label={l.label}
+                      title={l.label}
+                      className="flex h-11 w-11 items-center justify-center rounded-full bg-ink text-ink-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
                     >
-                      {l.label} ↗
+                      <l.Icon size={20} />
                     </a>
                   ))}
                 </div>
