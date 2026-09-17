@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import photo from "@/assets/photo.asset.json";
 import resume from "@/assets/resume.asset.json";
 
+import { Github, Linkedin, Code2, FileText } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { SkillSphere } from "@/components/SkillSphere";
 import devrankImg from "@/assets/devrank.jpg.asset.json";
@@ -672,19 +673,21 @@ function Portfolio() {
                 </div>
                 <div className="mt-8 flex flex-wrap gap-3">
                   {[
-                    { href: LINKS.github, label: "GitHub" },
-                    { href: LINKS.linkedin, label: "LinkedIn" },
-                    { href: LINKS.leetcode, label: "LeetCode" },
-                    { href: resume.url, label: "Résumé" },
+                    { href: LINKS.github, label: "GitHub", Icon: Github },
+                    { href: LINKS.linkedin, label: "LinkedIn", Icon: Linkedin },
+                    { href: LINKS.leetcode, label: "LeetCode", Icon: Code2 },
+                    { href: resume.url, label: "Résumé", Icon: FileText },
                   ].map((l) => (
                     <a
                       key={l.label}
                       href={l.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-ink-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+                      aria-label={l.label}
+                      title={l.label}
+                      className="flex h-11 w-11 items-center justify-center rounded-full bg-ink text-ink-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
                     >
-                      {l.label} ↗
+                      <l.Icon size={20} />
                     </a>
                   ))}
                 </div>
@@ -727,19 +730,21 @@ function Portfolio() {
               <p className="eyebrow text-ink-muted">Elsewhere</p>
               <ul className="mt-4 space-y-2.5 text-sm">
                 {[
-                  { href: LINKS.github, label: "GitHub" },
-                  { href: LINKS.linkedin, label: "LinkedIn" },
-                  { href: LINKS.leetcode, label: "LeetCode" },
-                  { href: resume.url, label: "Résumé" },
+                  { href: LINKS.github, label: "GitHub", Icon: Github },
+                  { href: LINKS.linkedin, label: "LinkedIn", Icon: Linkedin },
+                  { href: LINKS.leetcode, label: "LeetCode", Icon: Code2 },
+                  { href: resume.url, label: "Résumé", Icon: FileText },
                 ].map((l) => (
                   <li key={l.label}>
                     <a
                       href={l.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-ink-muted transition-colors hover:text-primary"
+                      aria-label={l.label}
+                      title={l.label}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-primary hover:text-primary-foreground"
                     >
-                      {l.label} ↗
+                      <l.Icon size={18} />
                     </a>
                   </li>
                 ))}
