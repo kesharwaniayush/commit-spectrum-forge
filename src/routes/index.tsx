@@ -1,20 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import photo from "@/assets/photo.asset.json";
-import resume from "@/assets/resume.asset.json";
+const photo = { url: "/media/portfolio.png" };
+const resume = { url: "/media/Ayush_Kesharwani_Resume.pdf" };
 
 import { Github, Linkedin, Code2, FileText } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { SkillSphere } from "@/components/SkillSphere";
-import devrankImg from "@/assets/devrank.jpg.asset.json";
-import legaliteaImg from "@/assets/legalitea.jpg.asset.json";
-import devpathImg from "@/assets/devpath.jpg.asset.json";
-import resumeAnalyzerImg from "@/assets/resume-analyzer.jpg.asset.json";
-import gramconnectImg from "@/assets/gramconnect.jpg.asset.json";
-import voicedeskImg from "@/assets/voicedesk.jpg.asset.json";
-import studysnapImg from "@/assets/studysnap.jpg.asset.json";
-import ecommerceImg from "@/assets/ecommerce.jpg.asset.json";
-import donorsyncImg from "@/assets/donorsync.jpg.asset.json";
+const devrankImg = { url: "/media/devrank.png" };
+const legaliteaImg = { url: "/media/legalitea.png" };
+const devpathImg = { url: "/media/devpath.png" };
+const resumeAnalyzerImg = { url: "/media/resume-analyzer.png" };
+const gramconnectImg = { url: "/media/gramconnect.jpg" };
+const voicedeskImg = { url: "/media/voicedesk.jpg" };
+const studysnapImg = { url: "/media/studysnap.jpg" };
+const ecommerceImg = { url: "/media/ecommerce.png" };
+const donorsyncImg = { url: "/media/donorsync.png" };
 
 
 const ROLES = ["Software Engineer", "Full-Stack Developer", "AI/ML Enthusiast", "Problem Solver"];
