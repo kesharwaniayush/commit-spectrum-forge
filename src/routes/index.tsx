@@ -25,6 +25,9 @@ function useRotatingRole() {
     const t = setInterval(() => setI((v) => (v + 1) % ROLES.length), 2200);
     return () => clearInterval(t);
   }, []);
+  useEffect(() => {
+    document.title = `Ayush Kesharwani — ${ROLES[i]}`;
+  }, [i]);
   return ROLES[i];
 }
 
