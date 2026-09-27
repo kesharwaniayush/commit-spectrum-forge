@@ -9,3 +9,5 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 - Photos, thumbnails and résumé live in public/media and pages are prerendered to dist/client, so the site works on static hosts like Netlify.
+
+- Nitro preset and output dirs are pinned in vite.config.ts (cloudflare-module, dist/server, dist/client): Netlify CI otherwise auto-selects its own preset and prerender cannot find dist/server.
